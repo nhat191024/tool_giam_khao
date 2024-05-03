@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DiemController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('admin/cuocthi');
+    return view('admin/user');
 });
+
+Route::get('/user/list', [UserController::class, 'list'])->name('admin.list');
+Route::get('/user/add', [UserController::class, 'add'])->name('admin.add');
+Route::get('/feedback/', [DiemController::class, 'addScreen'])->name('diem.add_screen');
