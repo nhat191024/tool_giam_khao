@@ -16,4 +16,8 @@ class UserController extends Controller
     public function add() {
         dd(1);
     }
+
+    public function login() {
+        return view('admin/login');
+    }
 }
