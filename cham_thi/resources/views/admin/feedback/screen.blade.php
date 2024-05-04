@@ -261,7 +261,7 @@
             </div>
         </div>
     </div>
-
+    <audio id="audio" src="{{ url('audio/like.mp3') }}"></audio>
     <!-- Bootstrap core JavaScript-->
     <script src="{{ url('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ url('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -306,7 +306,11 @@
         // Đảm bảo rằng mã này được đặt sau khi các nút đã được tải vào DOM
 
 
+        var audio = document.getElementById("audio");
+
         function selectImage(image, id) {
+            audio.currentTime = 0;
+            audio.play();
             // Xóa lớp 'selected' khỏi tất cả các ảnh
             var images = document.querySelectorAll('img');
             images.forEach(function(img) {
