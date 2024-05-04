@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>Document</title>
     <!-- Custom fonts for this template -->
     <link href="{{ url('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -25,7 +26,7 @@
             }
 
             50% {
-                transform: scale(1.3);
+                transform: scale(4);
             }
 
             100% {
@@ -35,7 +36,7 @@
 
         /* Thêm hiệu ứng CSS vào ảnh khi được chọn */
         .selected {
-            animation: pulse 0.5s ease;
+            animation: pulse 0.6s ease;
         }
 
         /* Tạo một class mới để loại bỏ hiệu ứng sau 1s */
@@ -61,7 +62,7 @@
             right: 0%;
             position: absolute;
             display: flex;
-            justify-content:  center;
+            justify-content: center;
             align-items: center
         }
 
@@ -72,167 +73,111 @@
             border-radius: 50%;
             margin-left: 10px;
         }
+
+        @keyframes fadeMoveUp {
+            0% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.3);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
     </style>
 </head>
 
 <body class="bg-main">
     <div class="avt1">
-        <p>Vũ Trí Thành</p>
+        <p>Vũ Chí Thành</p>
         <div class="avt2"></div>
     </div>
     <div class="w-100 vh-100 d-flex flex-column align-items-center p-5 ">
         <div class="w-100 h-75 bg-white border-radius mb-3 px-5">
-            <table class="table mt-5">
+            <table class="table mt-5" id="score">
                 <tbody>
-                    <tr>
-                        <th scope="row">Đội 1</th>
-                        <td><img src="img/red-heart_2764-fe0f.png" style="width: 30px; height: 30px" class="mr-3" />10
-                        </td>
-                        <td><img src="img/images-removebg-preview.png" style="width: 30px; height: 30px"
-                                class="mr-3" />10</td>
-                        <td><img src="img/grinning-face_1f600.png" style="width: 30px; height: 30px" class="mr-3" />10
-                        </td>
-                        <td><img src="img/face-with-open-mouth_1f62e.png" style="width: 30px; height: 30px"
-                                class="mr-3" />10</td>
-                        <td><img src="img/thumbs-up_1f44d.png" style="width: 30px; height: 30px" class="mr-3" />10
-                        </td>
-                        <td>Tổng điểm: 1000</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Đội 2</th>
-                        <td><img src="img/red-heart_2764-fe0f.png" style="width: 30px; height: 30px" class="mr-3" />10
-                        </td>
-                        <td><img src="img/images-removebg-preview.png" style="width: 30px; height: 30px"
-                                class="mr-3" />10</td>
-                        <td><img src="img/grinning-face_1f600.png" style="width: 30px; height: 30px" class="mr-3" />10
-                        </td>
-                        <td><img src="img/face-with-open-mouth_1f62e.png" style="width: 30px; height: 30px"
-                                class="mr-3" />10</td>
-                        <td><img src="img/thumbs-up_1f44d.png" style="width: 30px; height: 30px" class="mr-3" />10
-                        </td>
-                        <td>Tổng điểm: 1000</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Đội 3</th>
-                        <td><img src="img/red-heart_2764-fe0f.png" style="width: 30px; height: 30px" class="mr-3" />10
-                        </td>
-                        <td><img src="img/images-removebg-preview.png" style="width: 30px; height: 30px"
-                                class="mr-3" />10</td>
-                        <td><img src="img/grinning-face_1f600.png" style="width: 30px; height: 30px" class="mr-3" />10
-                        </td>
-                        <td><img src="img/face-with-open-mouth_1f62e.png" style="width: 30px; height: 30px"
-                                class="mr-3" />10</td>
-                        <td><img src="img/thumbs-up_1f44d.png" style="width: 30px; height: 30px" class="mr-3" />10
-                        </td>
-                        <td>Tổng điểm: 1000</td>
-                    </tr>
+                    @if ($diem != [])
+                        @foreach ($diem as $item)
+                            <tr>
+                                <th scope="row">{{ $item->ten_doi }}</th>
+                                <td><img src="img/red-heart_2764-fe0f.png" style="width: 30px; height: 30px"
+                                        class="mr-3" />{{ $item->sotim }}
+                                </td>
+                                <td><img src="img/images-removebg-preview.png" style="width: 30px; height: 30px"
+                                        class="mr-3" />{{ $item->sothuong }}</td>
+                                <td><img src="img/grinning-face_1f600.png" style="width: 30px; height: 30px"
+                                        class="mr-3" />{{ $item->sohaha }}
+                                </td>
+                                <td><img src="img/face-with-open-mouth_1f62e.png" style="width: 30px; height: 30px"
+                                        class="mr-3" />{{ $item->sowow }}</td>
+                                <td><img src="img/thumbs-up_1f44d.png" style="width: 30px; height: 30px"
+                                        class="mr-3" />{{ $item->solike }}
+                                </td>
+                                <td>Tổng điểm: {{ $item->tongso }}</td>
+                            </tr>
+                        @endforeach
+                    @else
+                        @foreach ($doiThi as $item)
+                            <tr>
+                                <th scope="row">{{ $item->ten_doi }}</th>
+                                <td><img src="img/red-heart_2764-fe0f.png" style="width: 30px; height: 30px"
+                                        class="mr-3" />0
+                                </td>
+                                <td><img src="img/images-removebg-preview.png" style="width: 30px; height: 30px"
+                                        class="mr-3" />0</td>
+                                <td><img src="img/grinning-face_1f600.png" style="width: 30px; height: 30px"
+                                        class="mr-3" />0
+                                </td>
+                                <td><img src="img/face-with-open-mouth_1f62e.png" style="width: 30px; height: 30px"
+                                        class="mr-3" />0</td>
+                                <td><img src="img/thumbs-up_1f44d.png" style="width: 30px; height: 30px"
+                                        class="mr-3" />0
+                                </td>
+                                <td>Tổng điểm: 0</td>
+                            </tr>
+                        @endforeach
+                    @endif
+
                 </tbody>
             </table>
         </div>
         <div class="w-100 h-25 bg-white border-radius ">
             <div class="d-flex justify-content-center mt-4">
-                <button class="btn bg-orange text-light fw-bold">Đội 1</button>
-                <button class="btn bg-orange text-light fw-bold ml-4">Đội 1</button>
-                <button class="btn bg-orange text-light fw-bold ml-4">Đội 1</button>
-                <button class="btn bg-orange text-light fw-bold ml-4">Đội 1</button>
-                <button class="btn bg-orange text-light fw-bold ml-4">Đội 1</button>
+                @foreach ($doiThi as $key => $item)
+                    <button id="{{ $item['id'] }}"
+                        class="{{ $key == 0 ? 'btn-warning' : 'btn-primary' }} btn doithi text-light fw-bold ml-2"
+                        onclick="chonDoi(this)">{{ $item['ten_doi'] }}</button>
+                @endforeach
             </div>
             <div class="d-flex justify-content-center mt-4">
-                <img src="img/red-heart_2764-fe0f.png" onclick="selectImage(this)" style="width: 65px; height: 65px" />
-                <img src="img/images-removebg-preview.png" onclick="selectImage(this)" style="width: 65px"
-                    class="ml-3" />
-                <img src="img/grinning-face_1f600.png" onclick="selectImage(this)" style="width: 65px" class="ml-3" />
-                <img src="img/face-with-open-mouth_1f62e.png" onclick="selectImage(this)" style="width: 65px"
-                    class="ml-3" />
-                <img src="img/thumbs-up_1f44d.png" onclick="selectImage(this)" style="width: 65px" class="ml-3" />
+                <img id="1" src="img/red-heart_2764-fe0f.png" onclick="selectImage(this, this.id)"
+                    style="width: 65px; height: 65px" />
+                <img id="2" src="img/images-removebg-preview.png" onclick="selectImage(this, this.id)"
+                    style="width: 65px" class="ml-3" />
+                <img id="3" src="img/grinning-face_1f600.png" onclick="selectImage(this, this.id)"
+                    style="width: 65px" class="ml-3" />
+                <img id="4" src="img/face-with-open-mouth_1f62e.png" onclick="selectImage(this, this.id)"
+                    style="width: 65px" class="ml-3" />
+                <img id="5" src="img/thumbs-up_1f44d.png" onclick="selectImage(this, this.id)"
+                    style="width: 65px" class="ml-3" />
             </div>
         </div>
     </div>
-    {{-- <div class="w-100 vh-100 d-flex align-items-center  px-5">
-        <div class="w-50 h-50 container border border-1 border-black mt-5 d-flex flex-column justify-content-center">
-            <table class="table text-center table-borderless ">
-                <thead>
-                    <tr>
-                        <th scope="col">Emoji </th>
-                        <th scope="col">Số lần</th>
-                        <th scope="col">Điểm</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><img src="https://img.icons8.com/color/48/000000/happy.png" alt=""></td>
-                        <td>10</td>
-                        <td>300</td>
-                    </tr>
-                    <tr>
-                        <td><img src="https://img.icons8.com/emoji/48/000000/smiling-face.png" alt=""></td>
-                        <td>20</td>
-                        <td>400</td>
-                    </tr>
-                    <tr>
-                        <td><img src="https://img.icons8.com/color/48/000000/lol.png" alt=""></td>
-                        <td>30</td>
-                        <td>300</td>
-                    </tr>
-                    <tr>
-                        <td><img src="https://img.icons8.com/fluent/48/000000/sad.png" alt=""></td>
-                        <td>40</td>
-                        <td>400</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div
-            class="w-50 h-50 container d-flex flex-column justify-content-center align-items-center border border-1 border-black rounded-2 mt-5 ml-2 pt-2">
-            <span class="text-center">
-                Hướng dẫn sử dụng chọn đội sau đó chọn biểu tượng cảm xúc để chấm điểm cho đội đó
-            </span>
-            <div class="d-flex flex-row justify-content-center mx-2">
-                <div class="row align-items-center">
-                    <div class="col text-center">
-                        <img width="70%" src="https://img.icons8.com/emoji/48/000000/angry-face-emoji--v2.png" />
-                        <p class="mb-0">50 điểm</p>
-                    </div>
-                    <div class="col text-center">
-                        <img width="70%" src="https://img.icons8.com/fluent/48/000000/sad.png" />
-                        <p class="mb-0">40 điểm</p>
-                    </div>
-                    <div class="col text-center">
-                        <img width="70%" src="https://img.icons8.com/color/48/000000/happy.png" />
-                        <p class="mb-0">30 điểm</p>
-                    </div>
-                    <div class="col text-center">
-                        <img width="70%" src="https://img.icons8.com/emoji/48/000000/smiling-face.png" />
-                        <p class="mb-0">20 điểm</p>
-                    </div>
-                    <div class="col text-center">
-                        <img width="70%" src="https://img.icons8.com/color/48/000000/lol.png" />
-                        <p class="mb-0">10 điểm</p>
-                    </div>
-                </div>
-            </div>
-            <div class="w-100 mt-2 p-4 text-center">
-                <h6>Mời giám khảo chọn đội thi</h6>
-                <div class="d-flex justify-content-center mb-2">
-                    <button class="btn btn-outline-dark ">Đội 1</button>
-                    <button class="btn btn-outline-dark ml-2">Đội 2</button>
-                    <button class="btn btn-outline-dark ml-2">Đội 3</button>
-                    <button class="btn btn-outline-dark ml-2">Đội 4</button>
-                </div>
-                <h6 class="mb-0">Mời giám khảo chấm điểm cho đội thi</h6>
-                <div class="d-flex flex-row justify-content-center mt-2">
-                    <img src="https://img.icons8.com/emoji/48/000000/angry-face-emoji--v2.png"
-                        onclick="selectImage(this)" />
-                    <img src="https://img.icons8.com/fluent/48/000000/sad.png" onclick="selectImage(this)" />
-                    <img src="https://img.icons8.com/color/48/000000/happy.png" onclick="selectImage(this)" />
-                    <img src="https://img.icons8.com/emoji/48/000000/smiling-face.png" onclick="selectImage(this)" />
-                    <img src="https://img.icons8.com/color/48/000000/lol.png" onclick="selectImage(this)" />
-                </div>
-            </div>
-        </div>
-
-    </div> --}}
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{ url('vendor/jquery/jquery.min.js') }}"></script>
@@ -252,7 +197,27 @@
     <script src="{{ url('js/demo/datatables-demo.js') }}"></script>
 
     <script>
-        function selectImage(image) {
+        var doiThi = document.querySelector('.doithi').id;
+
+        function chonDoi(element) {
+            // Đặt tất cả các nút về class 'btn-primary' và loại bỏ class 'btn-warning'
+            document.querySelectorAll('.doithi').forEach(function(btn) {
+                btn.classList.remove('btn-warning');
+                btn.classList.add('btn-primary');
+            });
+
+            // Thêm class 'btn-warning' cho nút được nhấn và loại bỏ class 'btn-primary'
+            element.classList.remove('btn-primary');
+            element.classList.add('btn-warning');
+
+            // Cập nhật biến 'doiThi' với id của nút được nhấn
+            doiThi = element.id;
+        }
+
+        // Đảm bảo rằng mã này được đặt sau khi các nút đã được tải vào DOM
+
+
+        function selectImage(image, id) {
             // Xóa lớp 'selected' khỏi tất cả các ảnh
             var images = document.querySelectorAll('img');
             images.forEach(function(img) {
@@ -260,12 +225,119 @@
                 img.classList.add('reset-animation');
                 setTimeout(function() {
                     img.classList.remove('reset-animation');
-                }, 100); // Loại bỏ lớp 'reset-animation' sau 0.1s
+                }, 100);
             });
 
-            // Thêm lớp 'selected' cho ảnh được nhấp vào
             image.classList.add('selected');
+
+            // Tạo một container mới để chứa hình ảnh và hiệu ứng +1
+            var container = document.createElement('div');
+            container.style.position = 'fixed';
+            container.style.top = '45%';
+            container.style.left = '45%';
+            container.style.transform = 'translate(-50%, -50%)';
+            container.style.display = 'flex';
+            container.style.flexDirection = 'column';
+            container.style.alignItems = 'center';
+            container.style.justifyContent = 'center'; // Đảm bảo các items được căn giữa theo cả hai chiều
+            container.style.animation = 'pop 0.5s forwards'; // Thêm animation pop cho container
+
+            // Tạo một bản sao của hình ảnh và thêm vào container
+            var imageClone = image.cloneNode(true);
+            imageClone.style.width = '200px'; // Đặt kích thước cho hình ảnh
+            imageClone.style.height = 'auto';
+            container.appendChild(imageClone);
+
+            // Tạo và thêm hiệu ứng +1 vào container
+            var plusOne = document.createElement('div');
+            plusOne.innerHTML = "+1";
+            plusOne.style.color = 'red';
+            plusOne.style.fontSize = '24px';
+            container.appendChild(plusOne);
+
+            document.body.appendChild(container);
+
+            // Áp dụng hiệu ứng pop ngay lập tức
+            container.style.animation = 'pop 0.5s forwards';
+
+            // Áp dụng hiệu ứng shrink sau khi hiệu ứng pop hoàn tất
+            setTimeout(function() {
+                container.style.animation = 'shrink 0.5s forwards';
+            }, 600); // Đặt thời gian chờ bằng với thời gian của animation pop
+
+            // Xóa container sau khi hoàn thành hiệu ứng shrink
+            setTimeout(function() {
+                container.remove();
+            }, 1000); // Thời gian này phải lớn hơn thời gian của animation shrink
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+
+                type: "POST",
+                url: "{{ route('diem.add_score') }}",
+                data: {
+                    doi_thi: doiThi,
+                    icon_id: id,
+                },
+                success: function(response) {
+                    updateTable(response.data);
+                },
+                error: function(response, status, error) {
+                    var error_message = JSON.parse(response.responseText);
+                    $('#message').text(error_message.message);
+                    $('#message').show();
+                }
+            })
+
+            console.log(id);
         }
+
+        // Định nghĩa hàm updateTable để cập nhật bảng
+        function updateTable(data) {
+            // Xóa tất cả các dòng hiện có trong bảng
+            $('#score tbody').empty();
+
+            // Duyệt qua mỗi mục trong mảng dữ liệu từ phản hồi API
+            $.each(data, function(index, item) {
+                // Tạo một hàng mới cho mỗi mục dữ liệu
+                var newRow = "<tr>" +
+                    "<th scope='row'>" + item.ten_doi + "</th>" +
+                    "<td><img src='img/red-heart_2764-fe0f.png' style='width: 30px; height: 30px' class='mr-3' />" +
+                    item.sotim + "</td>" +
+                    "<td><img src='img/images-removebg-preview.png' style='width: 30px; height: 30px' class='mr-3' />" +
+                    item.sothuong + "</td>" +
+                    "<td><img src='img/grinning-face_1f600.png' style='width: 30px; height: 30px' class='mr-3' />" +
+                    item.sohaha + "</td>" +
+                    "<td><img src='img/face-with-open-mouth_1f62e.png' style='width: 30px; height: 30px' class='mr-3' />" +
+                    item.sowow + "</td>" +
+                    "<td><img src='img/thumbs-up_1f44d.png' style='width: 30px; height: 30px' class='mr-3' />" +
+                    item.solike + "</td>" +
+                    "<td>Tổng điểm: " + item.tongso + "</td>" +
+                    "</tr>";
+
+                // Thêm hàng mới vào tbody của bảng
+                $('#score tbody').append(newRow);
+            });
+        }
+
+        // Định nghĩa keyframes cho animation pop
+        var styleSheet = document.createElement('style')
+        styleSheet.type = 'text/css'
+        styleSheet.innerText = `
+        @keyframes pop {
+        0% { opacity: 0; transform: scale(0); }
+        60% { opacity: 1; transform: scale(1.2); }
+        100% { opacity: 1; transform: scale(1); }
+        }
+        @keyframes shrink {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(0); opacity: 0; }
+        }`;
+        document.head.appendChild(styleSheet);
     </script>
 </body>
 
