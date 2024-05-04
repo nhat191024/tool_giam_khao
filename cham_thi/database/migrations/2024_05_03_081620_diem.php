@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('diem', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_doi_thi');
-            $table->unsignedBigInteger('id_mon_hoc');
+            $table->unsignedBigInteger('id_giam_khao');
             $table->unsignedBigInteger('id_icon');
             $table->timestamps();
         });

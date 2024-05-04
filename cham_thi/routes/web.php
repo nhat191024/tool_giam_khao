@@ -22,3 +22,4 @@ Route::get('/', function () {
 Route::get('/user/list', [UserController::class, 'list'])->name('admin.list');
 Route::get('/user/add', [UserController::class, 'add'])->name('admin.add');
 Route::get('/feedback/', [DiemController::class, 'addScreen'])->name('diem.add_screen');
+Route::post('/feedback/add', [DiemController::class, 'addScore'])->name('diem.add_score');
