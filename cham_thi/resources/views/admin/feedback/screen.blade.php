@@ -39,6 +39,11 @@
             animation: pulse 0.6s ease;
         }
 
+        /* Thêm hiệu ứng CSS vào ảnh khi được chọn */
+        .selectedBtn {
+            animation: pulseBtn 1s ease;
+        }
+
         /* Tạo một class mới để loại bỏ hiệu ứng sau 1s */
         .reset-animation {
             animation: none !important;
@@ -93,6 +98,20 @@
 
             50% {
                 transform: scale(1.3);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulseBtn {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(6);
             }
 
             100% {
@@ -209,6 +228,12 @@
             // Thêm class 'btn-warning' cho nút được nhấn và loại bỏ class 'btn-primary'
             element.classList.remove('btn-primary');
             element.classList.add('btn-warning');
+
+            // Thêm hiệu ứng zoom in/out cho nút được nhấn
+            element.classList.add('selectedBtn');
+            setTimeout(function() {
+                element.classList.remove('selectedBtn');
+            }, 1000); // Loại bỏ lớp 'selected' sau 0.3s
 
             // Cập nhật biến 'doiThi' với id của nút được nhấn
             doiThi = element.id;
