@@ -9,6 +9,7 @@
     <title>Document</title>
     <!-- Custom fonts for this template -->
     <link href="{{ url('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ url('css/app.css') }}">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -18,119 +19,6 @@
 
     <!-- Custom styles for this page -->
     <link href="{{ url('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
-    <style>
-        /* Hiệu ứng CSS */
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(4);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        /* Thêm hiệu ứng CSS vào ảnh khi được chọn */
-        .selected {
-            animation: pulse 0.6s ease;
-        }
-
-        /* Thêm hiệu ứng CSS vào ảnh khi được chọn */
-        .selectedBtn {
-            animation: pulseBtn 1s ease;
-        }
-
-        /* Tạo một class mới để loại bỏ hiệu ứng sau 1s */
-        .reset-animation {
-            animation: none !important;
-        }
-
-        .bg-orange {
-            background-color: rgb(255, 140, 0);
-        }
-
-        .bg-main {
-            background-color: rgb(255, 140, 0);
-        }
-
-        .border-radius {
-            border-radius: 20px;
-        }
-
-        .avatar {
-            margin: 5px 5px 0px 0px;
-            right: 0%;
-            position: absolute;
-            display: flex;
-            align-items: center
-        }
-
-        .avatarImg {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            margin-left: 10px;
-            border: 1px solid white;
-        }
-
-        .logo {
-            position: absolute;
-            top: 0;
-            left: 0;
-            margin: 5px 0px 0px 10px;
-        }
-
-        .tip-button {
-            position: absolute;
-            width: 5%;
-            top: 0;
-            right: 0;
-        }
-
-        @keyframes fadeMoveUp {
-            0% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            100% {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.3);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        @keyframes pulseBtn {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(6);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-    </style>
 </head>
 
 <body class="bg-main">
