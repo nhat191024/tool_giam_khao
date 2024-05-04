@@ -54,29 +54,41 @@
         }
 
         .bg-main {
-            background-color: #f8f6f6;
+            background-color: rgb(255, 140, 0);
         }
 
         .border-radius {
             border-radius: 20px;
         }
 
-        .avt1 {
-            /* width: 20%; */
+        .avatar {
             margin: 5px 5px 0px 0px;
             right: 0%;
             position: absolute;
             display: flex;
-            justify-content: center;
             align-items: center
         }
 
-        .avt2 {
-            background-color: white;
-            width: 50px;
-            height: 50px;
+        .avatarImg {
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             margin-left: 10px;
+            border: 1px solid white;
+        }
+
+        .logo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 5px 0px 0px 10px;
+        }
+
+        .tip-button {
+            position: absolute;
+            width: 5%;
+            top: 0;
+            right: 0;
         }
 
         @keyframes fadeMoveUp {
@@ -122,12 +134,15 @@
 </head>
 
 <body class="bg-main">
-    <div class="avt1">
-        <p>Vũ Chí Thành</p>
-        <div class="avt2"></div>
+    <div class="avatar">
+        <p class=" text-white m-auto ">Vũ Chí Thành</p>
+        <img src="img/Vu-Chi-Thanh.webp" width="20%" class="avatarImg">
     </div>
-    <div class="w-100 vh-100 d-flex flex-column align-items-center p-5 ">
-        <div class="w-100 h-75 bg-white border-radius mb-3 px-5">
+    <div class="logo">
+        <img src="img/whiteLogo.png" alt="" width="50%">
+    </div>
+    <div class="w-100 vh-100 d-flex flex-column align-items-center p-5">
+        <div class="w-100 h-75 bg-white border-radius mb-3 px-5 mt-3">
             <table class="table mt-5" id="score">
                 <tbody>
                     @if ($diem != [])
@@ -175,7 +190,10 @@
                 </tbody>
             </table>
         </div>
-        <div class="w-100 h-25 bg-white border-radius ">
+        <div class="w-100 h-25 bg-white border-radius position-relative">
+            <button class="btn tip-button" type="button" data-toggle="modal" data-target="#tip-modal">
+                <img src="img/question-mark.png" alt="" width="100%">
+            </button>
             <div class="d-flex justify-content-center mt-4">
                 @foreach ($doiThi as $key => $item)
                     <button id="{{ $item['id'] }}"
@@ -194,6 +212,52 @@
                     style="width: 65px" class="ml-3" />
                 <img id="5" src="img/thumbs-up_1f44d.png" onclick="selectImage(this, this.id)"
                     style="width: 65px" class="ml-3" />
+            </div>
+        </div>
+    </div>
+
+    {{-- Modal Hướng Dẫn sử dụng --}}
+    <div class="modal fade" id="tip-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tip-modal-label">Hướng Dẫn Sử Dụng</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>1. Chọn đội thi mà bạn muốn gửi điểm</p>
+                    <p>2. Nhấn vào biểu tượng để gửi điểm</p>
+                    <p>3. Mỗi biểu tượng sẽ tương ứng với một số điểm nhất định</p>
+                    <div class="d-flex justify-content-center">
+                        <div class="d-flex flex-column align-items-center justify-content-center ">
+                            <img src="img/red-heart_2764-fe0f.png" style="width: 40px; height: 40px">
+                            <p>50</p>
+                        </div>
+                        <div class="d-flex flex-column align-items-center justify-content-center ml-3">
+                            <img src="img/images-removebg-preview.png" style="width: 40px">
+                            <p>40</p>
+                        </div>
+                        <div class="d-flex flex-column align-items-center justify-content-center ml-3">
+                            <img src="img/grinning-face_1f600.png" style="width: 40px">
+                            <p>30</p>
+                        </div>
+                        <div class="d-flex flex-column align-items-center justify-content-center ml-3">
+                            <img src="img/face-with-open-mouth_1f62e.png" style="width: 40px">
+                            <p>20</p>
+                        </div>
+                        <div class="d-flex flex-column align-items-center justify-content-center ml-3">
+                            <img src="img/thumbs-up_1f44d.png" style="width: 40px">
+                            <p>10</p>
+                        </div>
+                    </div>
+                    <p>4. Có thể gửi điểm cho nhiều đội thi khác nhau</p>
+                    <p>5. Có thể gửi điểm cho cùng một đội thi nhiều lần</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                </div>
             </div>
         </div>
     </div>
