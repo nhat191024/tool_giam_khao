@@ -32,7 +32,7 @@
     <div class="w-100 vh-100 d-flex flex-column align-items-center p-5">
         <div class="w-100 h-75 d-flex justify-content-center bg-white border-radius mb-3 mt-3">
             <div class="w-50 position-relative">
-                <img src="img/Vu-Chi-Thanh.webp" class="team-avatar" width="100%">
+                <img src="img/Vu-Chi-Thanh.webp" class="team-avatar">
                 <div class="team-name text-center">
                     Công Nghệ Thông Tin
                 </div>

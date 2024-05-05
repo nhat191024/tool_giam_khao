@@ -85,6 +85,7 @@
 
     .team-avatar {
         border-radius: 20px 0px 0px 20px;
+        width: 101%;
     }
 
     .team-name {
