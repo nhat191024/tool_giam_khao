@@ -33,8 +33,8 @@
         <div class="w-100 h-75 d-flex justify-content-center bg-white border-radius mb-3 mt-3">
             <div class="w-50 position-relative">
                 <img src="img/Vu-Chi-Thanh.webp" class="team-avatar">
-                <div class="team-name text-center">
-                    Công Nghệ Thông Tin
+                <div class="team-name">
+                    <span>Công Nghệ Thông Tin</span>
                 </div>
             </div>
             <div class="w-50 d-flex justify-content-center align-items-center position-relative">
