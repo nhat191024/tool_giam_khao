@@ -27,12 +27,18 @@
 <body class="bg-main">
     <div class="avatar">
         <p class=" text-white m-auto ">Vũ Chí Thành</p>
-        <img src="{{url('img/Vu-Chi-Thanh.webp')}}" width="20%" class="avatarImg">
+        <a role="button" data-toggle="dropdown">
+            <img src="{{ url('img/Vu-Chi-Thanh.webp') }}" width="20%" class="avatarImg">
+        </a>
+
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Đăng Xuất</a>
+        </div>
     </div>
     <div class="score-nav">
-        <a href="{{route('diem.total_screen')}}" class="mr-3 text-white">Tổng Hợp</a>
-        <a href="{{route('diem.add_screen')}}" class="text-white">Chấm Điểm</a>
+        <a href="{{ route('diem.total_screen') }}" class="mr-3 text-white">Tổng Hợp</a>
+        <a href="{{ route('diem.add_screen') }}" class="text-white">Chấm Điểm</a>
     </div>
     <div class="logo">
-        <img src="{{url('img/whiteLogo.png')}}" alt="" width="50%">
+        <img src="{{ url('img/whiteLogo.png') }}" alt="" width="50%">
     </div>
