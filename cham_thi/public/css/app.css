@@ -13,8 +13,6 @@
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
     }
 
-
-
     /* feedback screen */
     @keyframes pulse {
         0% {
@@ -67,6 +65,16 @@
         border-radius: 50%;
         margin-left: 10px;
         border: 1px solid white;
+    }
+
+    .score-nav {
+        position: absolute;
+        right: 50%;
+        transform: translateX(50%);
+        top: 0;
+        margin-top: 20px;
+        font-size: 20px;
+        font-weight: bold;
     }
 
     .logo {
@@ -129,8 +137,6 @@
             padding: 5px 0px;
         }
     }
-
-
 
     .font-size-20 {
         font-size: 20px;
