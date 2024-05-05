@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\diem;
 use App\Models\doi_thi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DiemController extends Controller
 {
     public $diemModel;
-    function __construct()
+    function __construct()  
     {
         $this->diemModel = new diem();
     }
@@ -32,6 +33,7 @@ class DiemController extends Controller
 
     public function addScore(Request $request)
     {
+        $idGiamKhao = Auth::user()->id;
         $id = $request->icon_id;
         $doiThi = $request->doi_thi;
         if ($id == null) {
@@ -46,7 +48,7 @@ class DiemController extends Controller
             $diem = diem::create([
                 'id_icon' => $id,
                 'id_doi_thi' => $doiThi,
-                'id_giam_khao' => 1,
+                'id_giam_khao' => $idGiamKhao,
             ]);
             if ($diem) {
                 $result = $this->diemModel->getDiemByIdDoi($doiThi);

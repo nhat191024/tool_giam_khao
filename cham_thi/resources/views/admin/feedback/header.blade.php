@@ -1,3 +1,7 @@
+@php
+    use Illuminate\Support\Facades\Auth; 
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <title>Document</title>
+    <title>Fpoly Hải Phòng</title>
     <!-- Custom fonts for this template -->
     <link href="{{ url('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{ url('css/app.css') }}">
@@ -26,8 +30,8 @@
 
 <body class="bg-main">
     <div class="avatar">
-        <p class=" text-white m-auto ">Vũ Chí Thành</p>
-        <img src="{{url('img/Vu-Chi-Thanh.webp')}}" width="20%" class="avatarImg">
+        <p class=" text-white m-auto ">{{ Auth::user()->ho_ten }}</p>
+        <img src="{{url('img') . '/' . Auth::user()->hinh_anh}}" width="20%" class="avatarImg">
     </div>
     <div class="score-nav">
         <a href="{{route('diem.total_screen')}}" class="@if(Route::is('diem.total_screen')) {{ 'navselected' }} @endif mr-3 text-white">Tổng Hợp</a>

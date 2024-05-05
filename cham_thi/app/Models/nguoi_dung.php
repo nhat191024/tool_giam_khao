@@ -26,13 +26,5 @@ class nguoi_dung extends Authenticatable
         'quyen',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+
 }
