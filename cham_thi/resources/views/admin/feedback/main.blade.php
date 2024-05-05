@@ -1,60 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <title>Document</title>
-    <!-- Custom fonts for this template -->
-    <link href="{{ url('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="{{ url('css/app.css') }}">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="{{ url('css/sb-admin-2.min.css') }}" rel="stylesheet">
-
-    <!-- Global custom styles -->
-    <link rel="stylesheet" href="{{ url('css/app.css') }}">
-
-    <!-- Custom styles for this page -->
-    <link href="{{ url('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
-</head>
-
-<body class="bg-main">
-    <div class="avatar">
-        <p class=" text-white m-auto ">Vũ Chí Thành</p>
-        <img src="img/Vu-Chi-Thanh.webp" width="20%" class="avatarImg">
-    </div>
-    <div class="score-nav">
-        <a href="" class="mr-3 text-white">Tổng Hợp</a>
-        <a href="" class="text-white">Chấm Điểm</a>
-    </div>
-    <div class="logo">
-        <img src="img/whiteLogo.png" alt="" width="50%">
-    </div>
+@include('admin.feedback.header')
     <div class="w-100 vh-100 d-flex flex-column align-items-center p-5">
-        <div class="w-100 h-75 bg-white border-radius mb-3 px-5 mt-3">
+        <div class="w-100 h-100 bg-white border-radius mb-3 px-5 mt-3">
             <table class="table mt-5" id="score">
                 <tbody>
                     @if ($diem != [])
                         @foreach ($diem as $item)
                             <tr>
                                 <th scope="row">{{ $item->ten_doi }}</th>
-                                <td><img src="img/red-heart_2764-fe0f.png" style="width: 30px; height: 30px"
+                                <td><img src="{{url('img/red-heart_2764-fe0f.png')}}" style="width: 30px; height: 30px"
                                         class="mr-3" />{{ $item->sotim }}
                                 </td>
-                                <td><img src="img/images-removebg-preview.png" style="width: 30px; height: 30px"
+                                <td><img src="{{url('img/images-removebg-preview.png')}}" style="width: 30px; height: 30px"
                                         class="mr-3" />{{ $item->sothuong }}</td>
-                                <td><img src="img/grinning-face_1f600.png" style="width: 30px; height: 30px"
+                                <td><img src="{{url('img/grinning-face_1f600.png')}}" style="width: 30px; height: 30px"
                                         class="mr-3" />{{ $item->sohaha }}
                                 </td>
-                                <td><img src="img/face-with-open-mouth_1f62e.png" style="width: 30px; height: 30px"
+                                <td><img src="{{url('img/face-with-open-mouth_1f62e.png')}}" style="width: 30px; height: 30px"
                                         class="mr-3" />{{ $item->sowow }}</td>
-                                <td><img src="img/thumbs-up_1f44d.png" style="width: 30px; height: 30px"
+                                <td><img src="{{url('img/thumbs-up_1f44d.png')}}" style="width: 30px; height: 30px"
                                         class="mr-3" />{{ $item->solike }}
                                 </td>
                                 <td>Tổng điểm: {{ $item->tongso }}</td>
@@ -64,17 +27,17 @@
                         @foreach ($doiThi as $item)
                             <tr>
                                 <th scope="row">{{ $item->ten_doi }}</th>
-                                <td><img src="img/red-heart_2764-fe0f.png" style="width: 30px; height: 30px"
+                                <td><img src="{{url('img/red-heart_2764-fe0f.png')}}" style="width: 30px; height: 30px"
                                         class="mr-3" />0
                                 </td>
-                                <td><img src="img/images-removebg-preview.png" style="width: 30px; height: 30px"
+                                <td><img src="{{url('img/images-removebg-preview.png')}}" style="width: 30px; height: 30px"
                                         class="mr-3" />0</td>
-                                <td><img src="img/grinning-face_1f600.png" style="width: 30px; height: 30px"
+                                <td><img src="{{url('img/grinning-face_1f600.png')}}" style="width: 30px; height: 30px"
                                         class="mr-3" />0
                                 </td>
-                                <td><img src="img/face-with-open-mouth_1f62e.png" style="width: 30px; height: 30px"
+                                <td><img src="{{url('img/face-with-open-mouth_1f62e.png')}}" style="width: 30px; height: 30px"
                                         class="mr-3" />0</td>
-                                <td><img src="img/thumbs-up_1f44d.png" style="width: 30px; height: 30px"
+                                <td><img src="{{url('img/thumbs-up_1f44d.png')}}" style="width: 30px; height: 30px"
                                         class="mr-3" />0
                                 </td>
                                 <td>Tổng điểm: 0</td>
@@ -85,77 +48,6 @@
                 </tbody>
             </table>
         </div>
-        <div class="w-100 h-25 bg-white border-radius position-relative">
-            <button class="btn tip-button" type="button" data-toggle="modal" data-target="#tip-modal">
-                <img src="img/question-mark.png" alt="" width="100%">
-            </button>
-            <div class="d-flex justify-content-center mt-4">
-                @foreach ($doiThi as $key => $item)
-                    <button id="{{ $item['id'] }}"
-                        class="{{ $key == 0 ? 'btn-warning' : 'btn-primary' }} btn doithi text-light fw-bold ml-2"
-                        onclick="chonDoi(this)">{{ $item['ten_doi'] }}</button>
-                @endforeach
-            </div>
-            <div class="d-flex justify-content-center mt-4">
-                <img id="1" src="img/red-heart_2764-fe0f.png" onclick="selectImage(this, this.id)"
-                    style="width: 65px; height: 65px" />
-                <img id="2" src="img/images-removebg-preview.png" onclick="selectImage(this, this.id)"
-                    style="width: 65px" class="ml-3" />
-                <img id="3" src="img/grinning-face_1f600.png" onclick="selectImage(this, this.id)"
-                    style="width: 65px" class="ml-3" />
-                <img id="4" src="img/face-with-open-mouth_1f62e.png" onclick="selectImage(this, this.id)"
-                    style="width: 65px" class="ml-3" />
-                <img id="5" src="img/thumbs-up_1f44d.png" onclick="selectImage(this, this.id)"
-                    style="width: 65px" class="ml-3" />
-            </div>
-        </div>
-    </div>
-
-    {{-- Modal Hướng Dẫn sử dụng --}}
-    <div class="modal fade" id="tip-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="tip-modal-label">Hướng Dẫn Sử Dụng</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>1. Chọn đội thi mà bạn muốn gửi điểm</p>
-                    <p>2. Nhấn vào biểu tượng để gửi điểm</p>
-                    <p>3. Mỗi biểu tượng sẽ tương ứng với một số điểm nhất định</p>
-                    <div class="d-flex justify-content-center">
-                        <div class="d-flex flex-column align-items-center justify-content-center ">
-                            <img src="img/red-heart_2764-fe0f.png" style="width: 40px; height: 40px">
-                            <p>50</p>
-                        </div>
-                        <div class="d-flex flex-column align-items-center justify-content-center ml-3">
-                            <img src="img/images-removebg-preview.png" style="width: 40px">
-                            <p>40</p>
-                        </div>
-                        <div class="d-flex flex-column align-items-center justify-content-center ml-3">
-                            <img src="img/grinning-face_1f600.png" style="width: 40px">
-                            <p>30</p>
-                        </div>
-                        <div class="d-flex flex-column align-items-center justify-content-center ml-3">
-                            <img src="img/face-with-open-mouth_1f62e.png" style="width: 40px">
-                            <p>20</p>
-                        </div>
-                        <div class="d-flex flex-column align-items-center justify-content-center ml-3">
-                            <img src="img/thumbs-up_1f44d.png" style="width: 40px">
-                            <p>10</p>
-                        </div>
-                    </div>
-                    <p>4. Có thể gửi điểm cho nhiều đội thi khác nhau</p>
-                    <p>5. Có thể gửi điểm cho cùng một đội thi nhiều lần</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{ url('vendor/jquery/jquery.min.js') }}"></script>

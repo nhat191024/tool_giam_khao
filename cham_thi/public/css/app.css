@@ -188,3 +188,7 @@
             transform: scale(1);
         }
     }
+
+    .navselected {
+        text-decoration: underline;
+    }

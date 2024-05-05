@@ -21,6 +21,7 @@ Route::get('/', [DiemController::class, 'addScreen']);
 Route::get('/user/list', [UserController::class, 'list'])->name('admin.list');
 Route::get('/user/add', [UserController::class, 'add'])->name('admin.add');
 Route::get('/feedback/', [DiemController::class, 'addScreen'])->name('diem.add_screen');
+Route::get('/feedback/total', [DiemController::class, 'totalScreen'])->name('diem.total_screen');
 Route::post('/feedback/add', [DiemController::class, 'addScore'])->name('diem.add_score');
 
 // client

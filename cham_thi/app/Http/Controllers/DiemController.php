@@ -22,6 +22,13 @@ class DiemController extends Controller
         $diem = $this->diemModel->getDiemByIdDoi($idFirst);
         return view('admin.feedback.screen', compact('doiThi', 'diem'));
     }
+    //
+    public function totalScreen()
+    {
+        $doiThi = doi_thi::all();
+        $diem = $this->diemModel->getDiem();
+        return view('admin.feedback.main', compact('doiThi', 'diem'));
+    }
 
     public function addScore(Request $request)
     {
