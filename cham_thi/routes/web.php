@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [DiemController::class, 'addScreen']);
+Route::get('/', [DiemController::class, 'addScreen'])->name('diem.add_screen');;
 
 // admin    
 Route::get('/user/list', [UserController::class, 'list'])->name('admin.list');

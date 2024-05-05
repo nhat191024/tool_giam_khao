@@ -30,8 +30,8 @@
         <img src="{{url('img/Vu-Chi-Thanh.webp')}}" width="20%" class="avatarImg">
     </div>
     <div class="score-nav">
-        <a href="{{route('diem.total_screen')}}" class="mr-3 text-white">Tổng Hợp</a>
-        <a href="{{route('diem.add_screen')}}" class="text-white">Chấm Điểm</a>
+        <a href="{{route('diem.total_screen')}}" class="@if(Route::is('diem.total_screen')) {{ 'navselected' }} @endif mr-3 text-white">Tổng Hợp</a>
+        <a href="{{route('diem.add_screen')}}" class="@if(Route::is('diem.add_screen')) {{ 'navselected' }} @endif text-white">Chấm Điểm</a>
     </div>
     <div class="logo">
         <img src="{{url('img/whiteLogo.png')}}" alt="" width="50%">

@@ -2,9 +2,9 @@
     <div class="w-100 vh-100 d-flex flex-column align-items-center p-5">
         <div class="w-100 h-75 d-flex justify-content-center bg-white border-radius mb-3 mt-3">
             <div class="w-50 position-relative">
-                <img src="{{url('img/avatar-doithi1.jpg')}}" class="team-avatar">
-                <div class="team-name">
-                    <span>Công Nghệ Thông Tin</span>
+                <img id="team-image" src="{{url('img/avatar-doithi1.jpg')}}" class="team-avatar">
+                <div class="">
+                    <span class="team-name" id="team-name">Công Nghệ Thông Tin</span>
                 </div>
             </div>
             <div class="w-50 d-flex justify-content-center align-items-center position-relative score">
@@ -46,7 +46,7 @@
             </button>
             <div class="d-flex justify-content-center mt-4">
                 @foreach ($doiThi as $key => $item)
-                    <button id="{{ $item['id'] }}"
+                    <button id="{{ $item['id'] }}" name="{{url('img') . '/' . $item['hinh_anh']}}"
                         class="{{ $key == 0 ? 'btn-warning' : 'btn-primary' }} btn doithi text-light fw-bold ml-2"
                         onclick="chonDoi(this)">{{ $item['ten_doi'] }}</button>
                 @endforeach
@@ -173,6 +173,11 @@
                     $('#message').show();
                 }
             })
+
+            var teamName = document.getElementById('team-name');
+            var teamImage = document.getElementById('team-image');
+            teamName.textContent = element.textContent;
+            teamImage.src = element.name;
         }
 
         // Đảm bảo rằng mã này được đặt sau khi các nút đã được tải vào DOM
