@@ -1,5 +1,5 @@
 @php
-    use Illuminate\Support\Facades\Auth; 
+    use Illuminate\Support\Facades\Auth;
 @endphp
 
 <!DOCTYPE html>
@@ -31,12 +31,20 @@
 <body class="bg-main">
     <div class="avatar">
         <p class=" text-white m-auto ">{{ Auth::user()->ho_ten }}</p>
-        <img src="{{url('img') . '/' . Auth::user()->hinh_anh}}" width="20%" class="avatarImg">
+        <a role="button" data-toggle="dropdown">
+            <img src="{{ url('img') . '/' . Auth::user()->hinh_anh }}" width="20%" class="avatarImg">
+        </a>
+
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{ route('client.logout') }}">Đăng Xuất</a>
+        </div>
     </div>
     <div class="score-nav">
-        <a href="{{route('diem.total_screen')}}" class="@if(Route::is('diem.total_screen')) {{ 'navselected' }} @endif mr-3 text-white">Tổng Hợp</a>
-        <a href="{{route('diem.add_screen')}}" class="@if(Route::is('diem.add_screen')) {{ 'navselected' }} @endif text-white">Chấm Điểm</a>
+        <a href="{{ route('diem.total_screen') }}"
+            class="@if (Route::is('diem.total_screen')) {{ 'navselected' }} @endif mr-3 text-white">Tổng Hợp</a>
+        <a href="{{ route('diem.add_screen') }}"
+            class="@if (Route::is('diem.add_screen')) {{ 'navselected' }} @endif text-white">Chấm Điểm</a>
     </div>
     <div class="logo">
-        <img src="{{url('img/whiteLogo.png')}}" alt="" width="50%">
+        <img src="{{ url('img/whiteLogo.png') }}" alt="" width="50%">
     </div>
