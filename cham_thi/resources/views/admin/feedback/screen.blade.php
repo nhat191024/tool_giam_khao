@@ -37,37 +37,38 @@
                     <span>Công Nghệ Thông Tin</span>
                 </div>
             </div>
-            <div class="w-50 d-flex justify-content-center align-items-center position-relative">
-                <div>
+            <div class="w-50 d-flex justify-content-center align-items-center position-relative score">
+                <div class="text-center">
                     <div class="d-flex justify-content-center mb-3 font-weight-bold font-size-20">
                         <p>
                             <img src="img/red-heart_2764-fe0f.png" style="width: 75px; height: 75px" class="mr-3" />
-                            0
+                            <span id="red-heart-score">{{ $diem->sotim }}</span>
                         </p>
                         <p>
                             <img src="img/images-removebg-preview.png" style="width: 75px; height: 75px"
                                 class="mx-3" />
-                            0
+                            <span id="removebg-preview-score">{{ $diem->sothuong }}</span>
                         </p>
                     </div>
-                    <div class="d-flex font-weight-bold font-size-20">
+                    <div class="d-flex font-weight-bold font-size-20 mb-4">
                         <p>
                             <img src="img/grinning-face_1f600.png" style="width: 75px; height: 75px" class="mx-3" />
-                            0
+                            <span id="grinning-face-score">{{ $diem->sohaha }}</span>
                         </p>
                         <p>
                             <img src="img/face-with-open-mouth_1f62e.png" style="width: 75px; height: 75px"
                                 class="mx-3" />
-                            0
+                            <span id="face-with-open-mouth-score">{{ $diem->sowow }}</span>
                         </p>
                         <p>
                             <img src="img/thumbs-up_1f44d.png" style="width: 75px; height: 75px" class="mx-3" />
-                            0
+                            <span id="thumbs-up-score">{{ $diem->solike }}</span>
                         </p>
                     </div>
+                    <div class="" id="total-score">Tổng điểm: {{ $diem->tongso }}</div>
                 </div>
-                <div class="score">Điểm 1000</div>
             </div>
+
         </div>
         <div class="w-100 h-25 bg-white border-radius position-relative">
             <button class="btn tip-button" type="button" data-toggle="modal" data-target="#tip-modal">
@@ -180,6 +181,28 @@
 
             // Cập nhật biến 'doiThi' với id của nút được nhấn
             doiThi = element.id;
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+
+                type: "POST",
+                url: "{{ route('diem.add_score') }}",
+                data: {
+                    doi_thi: doiThi,
+                    icon_id: null,
+                },
+                success: function(response) {
+                    updateScore(response.data);
+                },
+                error: function(response, status, error) {
+                    var error_message = JSON.parse(response.responseText);
+                    $('#message').text(error_message.message);
+                    $('#message').show();
+                }
+            })
         }
 
         // Đảm bảo rằng mã này được đặt sau khi các nút đã được tải vào DOM
@@ -256,7 +279,7 @@
                     icon_id: id,
                 },
                 success: function(response) {
-                    updateTable(response.data);
+                    updateScore(response.data);
                 },
                 error: function(response, status, error) {
                     var error_message = JSON.parse(response.responseText);
@@ -268,33 +291,25 @@
             console.log(id);
         }
 
-        // Định nghĩa hàm updateTable để cập nhật bảng
-        function updateTable(data) {
-            // Xóa tất cả các dòng hiện có trong bảng
-            $('#score tbody').empty();
+        function updateScore(data) {
+            // Lấy ra các phần tử trong div score
+            var redHeart = document.getElementById('red-heart-score');
+            var removebgPreview = document.getElementById('removebg-preview-score');
+            var grinningFace = document.getElementById('grinning-face-score');
+            var faceWithOpenMouth = document.getElementById('face-with-open-mouth-score');
+            var thumbsUp = document.getElementById('thumbs-up-score');
+            var totalScore = document.getElementById('total-score');
 
-            // Duyệt qua mỗi mục trong mảng dữ liệu từ phản hồi API
-            $.each(data, function(index, item) {
-                // Tạo một hàng mới cho mỗi mục dữ liệu
-                var newRow = "<tr>" +
-                    "<th scope='row'>" + item.ten_doi + "</th>" +
-                    "<td><img src='img/red-heart_2764-fe0f.png' style='width: 30px; height: 30px' class='mr-3' />" +
-                    item.sotim + "</td>" +
-                    "<td><img src='img/images-removebg-preview.png' style='width: 30px; height: 30px' class='mr-3' />" +
-                    item.sothuong + "</td>" +
-                    "<td><img src='img/grinning-face_1f600.png' style='width: 30px; height: 30px' class='mr-3' />" +
-                    item.sohaha + "</td>" +
-                    "<td><img src='img/face-with-open-mouth_1f62e.png' style='width: 30px; height: 30px' class='mr-3' />" +
-                    item.sowow + "</td>" +
-                    "<td><img src='img/thumbs-up_1f44d.png' style='width: 30px; height: 30px' class='mr-3' />" +
-                    item.solike + "</td>" +
-                    "<td>Tổng điểm: " + item.tongso + "</td>" +
-                    "</tr>";
-
-                // Thêm hàng mới vào tbody của bảng
-                $('#score tbody').append(newRow);
-            });
+            // Cập nhật nội dung của các phần tử với dữ liệu từ API
+            redHeart.textContent = data.sotim;
+            removebgPreview.textContent = data.sothuong;
+            grinningFace.textContent = data.sohaha;
+            faceWithOpenMouth.textContent = data.sowow;
+            thumbsUp.textContent = data.solike;
+            totalScore.textContent = 'Tổng điểm: ' + data.tongso;
         }
+
+
 
         // Định nghĩa keyframes cho animation pop
         var styleSheet = document.createElement('style')
