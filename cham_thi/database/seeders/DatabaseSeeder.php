@@ -21,40 +21,40 @@ class DatabaseSeeder extends Seeder
     {
         nguoi_dung::create([
             'ho_ten' => 'admin',
-            'tai_khoan' => 'admin',
-            'mat_khau' => bcrypt('admin'),
+            'email' => 'admin',
+            'password' => bcrypt('admin'),
             'hinh_anh' => 'admin.jpg',
             'quyen' => 1,
         ]);
 
         nguoi_dung::create([
             'ho_ten' => 'thanhvc',
-            'tai_khoan' => 'thanhvc',
-            'mat_khau' => bcrypt('thanhvc'),
+            'email' => 'thanhvc',
+            'password' => bcrypt('thanhvc'),
             'hinh_anh' => 'thanhvc.jpg',
             'quyen' => 2,
         ]);
 
         nguoi_dung::create([
             'ho_ten' => 'anhptv',
-            'tai_khoan' => 'anhptv',
-            'mat_khau' => bcrypt('anhptv'),
+            'email' => 'anhptv',
+            'password' => bcrypt('anhptv'),
             'hinh_anh' => 'anhptv.jpg',
             'quyen' => 2,
         ]);
 
         nguoi_dung::create([
             'ho_ten' => 'anhpt',
-            'tai_khoan' => 'anhpt',
-            'mat_khau' => bcrypt('anhpt'),
+            'email' => 'anhpt',
+            'password' => bcrypt('anhpt'),
             'hinh_anh' => 'anhpt.jpg',
             'quyen' => 2,
         ]);
 
         nguoi_dung::create([
             'ho_ten' => 'thanghq',
-            'tai_khoan' => 'thanghq',
-            'mat_khau' => bcrypt('thanghq'),
+            'email' => 'thanghq',
+            'password' => bcrypt('thanghq'),
             'hinh_anh' => 'thanghq.jpg',
             'quyen' => 2,
         ]);
@@ -91,25 +91,25 @@ class DatabaseSeeder extends Seeder
 
         doi_thi::create([
             'ten_doi' => 'Công nghệ thông tin',
-            'hinh_anh' => 'cntt.jpg',
+            'hinh_anh' => 'avatar-doithi1.jpg',
             'id_cuoc_thi' => 1
         ]);
 
         doi_thi::create([
             'ten_doi' => 'Thiết kế đồ họa',
-            'hinh_anh' => 'tkdh.jpg',
+            'hinh_anh' => 'avatar-doithi2.webp',
             'id_cuoc_thi' => 1
         ]);
 
         doi_thi::create([
             'ten_doi' => 'Tiếng anh',
-            'hinh_anh' => 'ta.jpg',
+            'hinh_anh' => 'avatar-doithi3.jpeg',
             'id_cuoc_thi' => 1
         ]);
 
         doi_thi::create([
             'ten_doi' => 'Marketing',
-            'hinh_anh' => 'mkt.jpg',
+            'hinh_anh' => 'avatar-doithi4.jpg',
             'id_cuoc_thi' => 1
         ]);
 
