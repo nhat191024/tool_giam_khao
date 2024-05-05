@@ -10,29 +10,29 @@
             <div class="w-50 d-flex justify-content-center align-items-center position-relative score">
                 <div class="text-center">
                     <div class="d-flex justify-content-center mb-3 font-weight-bold font-size-20">
-                        <p>
+                        <p class="d-flex align-items-center">
                             <img src="{{url('img/red-heart_2764-fe0f.png')}}" style="width: 75px; height: 75px" class="mr-3" />
-                            <span id="red-heart-score">{{ $diem->sotim }}</span>
+                            <span class="score-number" id="red-heart-score">{{ $diem->sotim }}</span>
                         </p>
-                        <p>
+                        <p class="d-flex align-items-center">
                             <img src="{{url('img/images-removebg-preview.png')}}" style="width: 75px; height: 75px"
                                 class="mx-3" />
-                            <span id="removebg-preview-score">{{ $diem->sothuong }}</span>
+                            <span class="score-number" id="removebg-preview-score">{{ $diem->sothuong }}</span>
                         </p>
                     </div>
                     <div class="d-flex font-weight-bold font-size-20 mb-4">
-                        <p>
+                        <p class="d-flex align-items-center">
                             <img src="{{url('img/grinning-face_1f600.png')}}" style="width: 75px; height: 75px" class="mx-3" />
-                            <span id="grinning-face-score">{{ $diem->sohaha }}</span>
+                            <span class="score-number" id="grinning-face-score">{{ $diem->sohaha }}</span>
                         </p>
-                        <p>
+                        <p class="d-flex align-items-center">
                             <img src="{{url('img/face-with-open-mouth_1f62e.png')}}" style="width: 75px; height: 75px"
                                 class="mx-3" />
-                            <span id="face-with-open-mouth-score">{{ $diem->sowow }}</span>
+                            <span class="score-number" id="face-with-open-mouth-score">{{ $diem->sowow }}</span>
                         </p>
-                        <p>
+                        <p class="d-flex align-items-center">
                             <img src="{{url('img/thumbs-up_1f44d.png')}}" style="width: 75px; height: 75px" class="mx-3" />
-                            <span id="thumbs-up-score">{{ $diem->solike }}</span>
+                            <span class="score-number" id="thumbs-up-score">{{ $diem->solike }}</span>
                         </p>
                     </div>
                     <div class="" id="total-score">Tổng điểm: {{ $diem->tongso }}</div>
