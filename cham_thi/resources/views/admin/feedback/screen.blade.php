@@ -30,53 +30,44 @@
         <img src="img/whiteLogo.png" alt="" width="50%">
     </div>
     <div class="w-100 vh-100 d-flex flex-column align-items-center p-5">
-        <div class="w-100 h-75 bg-white border-radius mb-3 px-5 mt-3">
-            <table class="table mt-5" id="score">
-                <tbody>
-                    @if ($diem != [])
-                        @foreach ($diem as $item)
-                            <tr>
-                                <th scope="row">{{ $item->ten_doi }}</th>
-                                <td><img src="img/red-heart_2764-fe0f.png" style="width: 30px; height: 30px"
-                                        class="mr-3" />{{ $item->sotim }}
-                                </td>
-                                <td><img src="img/images-removebg-preview.png" style="width: 30px; height: 30px"
-                                        class="mr-3" />{{ $item->sothuong }}</td>
-                                <td><img src="img/grinning-face_1f600.png" style="width: 30px; height: 30px"
-                                        class="mr-3" />{{ $item->sohaha }}
-                                </td>
-                                <td><img src="img/face-with-open-mouth_1f62e.png" style="width: 30px; height: 30px"
-                                        class="mr-3" />{{ $item->sowow }}</td>
-                                <td><img src="img/thumbs-up_1f44d.png" style="width: 30px; height: 30px"
-                                        class="mr-3" />{{ $item->solike }}
-                                </td>
-                                <td>Tổng điểm: {{ $item->tongso }}</td>
-                            </tr>
-                        @endforeach
-                    @else
-                        @foreach ($doiThi as $item)
-                            <tr>
-                                <th scope="row">{{ $item->ten_doi }}</th>
-                                <td><img src="img/red-heart_2764-fe0f.png" style="width: 30px; height: 30px"
-                                        class="mr-3" />0
-                                </td>
-                                <td><img src="img/images-removebg-preview.png" style="width: 30px; height: 30px"
-                                        class="mr-3" />0</td>
-                                <td><img src="img/grinning-face_1f600.png" style="width: 30px; height: 30px"
-                                        class="mr-3" />0
-                                </td>
-                                <td><img src="img/face-with-open-mouth_1f62e.png" style="width: 30px; height: 30px"
-                                        class="mr-3" />0</td>
-                                <td><img src="img/thumbs-up_1f44d.png" style="width: 30px; height: 30px"
-                                        class="mr-3" />0
-                                </td>
-                                <td>Tổng điểm: 0</td>
-                            </tr>
-                        @endforeach
-                    @endif
-
-                </tbody>
-            </table>
+        <div class="w-100 h-75 d-flex justify-content-center bg-white border-radius mb-3 mt-3">
+            <div class="w-50 position-relative">
+                <img src="img/Vu-Chi-Thanh.webp" class="team-avatar" width="100%">
+                <div class="team-name text-center">
+                    Công Nghệ Thông Tin
+                </div>
+            </div>
+            <div class="w-50 d-flex justify-content-center align-items-center position-relative">
+                <div>
+                    <div class="d-flex justify-content-center mb-3 font-weight-bold font-size-20">
+                        <p>
+                            <img src="img/red-heart_2764-fe0f.png" style="width: 75px; height: 75px" class="mr-3" />
+                            0
+                        </p>
+                        <p>
+                            <img src="img/images-removebg-preview.png" style="width: 75px; height: 75px"
+                                class="mx-3" />
+                            0
+                        </p>
+                    </div>
+                    <div class="d-flex font-weight-bold font-size-20">
+                        <p>
+                            <img src="img/grinning-face_1f600.png" style="width: 75px; height: 75px" class="mx-3" />
+                            0
+                        </p>
+                        <p>
+                            <img src="img/face-with-open-mouth_1f62e.png" style="width: 75px; height: 75px"
+                                class="mx-3" />
+                            0
+                        </p>
+                        <p>
+                            <img src="img/thumbs-up_1f44d.png" style="width: 75px; height: 75px" class="mx-3" />
+                            0
+                        </p>
+                    </div>
+                </div>
+                <div class="score">Điểm 1000</div>
+            </div>
         </div>
         <div class="w-100 h-25 bg-white border-radius position-relative">
             <button class="btn tip-button" type="button" data-toggle="modal" data-target="#tip-modal">

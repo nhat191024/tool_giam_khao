@@ -83,6 +83,37 @@
         right: 0;
     }
 
+    .team-avatar {
+        border-radius: 20px 0px 0px 20px;
+    }
+
+    .team-name {
+        position: absolute;
+        width: 60%;
+        height: 10%;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;
+        font-size: 28px;
+        font-weight: bold;
+        background-color: rgb(255, 140, 0);
+        border-radius: 20px;
+        margin-bottom: 10px;
+        padding-top: 5px;
+    }
+
+    .font-size-20 {
+        font-size: 20px;
+    }
+
+    .score {
+        position: absolute;
+        bottom: 0;
+        font-size: 30px;
+        font-weight: bold;
+    }
+
     @keyframes fadeMoveUp {
         0% {
             opacity: 1;
