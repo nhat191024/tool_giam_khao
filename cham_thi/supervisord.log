@@ -84,3 +84,29 @@
 2024-05-06 17:12:05,898 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
 2024-05-06 17:12:05,898 INFO success: laravel-worker_01 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
 2024-05-06 17:12:05,899 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-06 17:53:49,328 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-05-06 17:53:49,329 INFO Included extra file "/etc/supervisor.d/php-fpm.conf" during parsing
+2024-05-06 17:53:49,329 INFO Included extra file "/etc/supervisor.d/worker.conf" during parsing
+2024-05-06 17:53:49,333 INFO supervisord started with pid 1
+2024-05-06 17:53:50,337 INFO spawned: 'laravel-worker_00' with pid 8
+2024-05-06 17:53:50,339 INFO spawned: 'laravel-worker_01' with pid 9
+2024-05-06 17:53:50,342 INFO spawned: 'php-fpm' with pid 10
+2024-05-06 17:53:52,093 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-06 17:53:52,093 INFO success: laravel-worker_01 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-06 17:53:52,093 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-06 17:59:05,217 INFO reaped unknown pid 344 (terminated by SIGINT)
+2024-05-06 17:59:19,246 WARN received SIGQUIT indicating exit request
+2024-05-06 17:59:19,247 INFO waiting for laravel-worker_00, laravel-worker_01, php-fpm to die
+2024-05-06 17:59:19,253 INFO stopped: php-fpm (exit status 0)
+2024-05-06 17:59:19,267 INFO stopped: laravel-worker_00 (exit status 0)
+2024-05-06 17:59:19,267 INFO stopped: laravel-worker_01 (exit status 0)
+2024-05-06 17:59:23,898 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-05-06 17:59:23,898 INFO Included extra file "/etc/supervisor.d/php-fpm.conf" during parsing
+2024-05-06 17:59:23,898 INFO Included extra file "/etc/supervisor.d/worker.conf" during parsing
+2024-05-06 17:59:23,903 INFO supervisord started with pid 1
+2024-05-06 17:59:24,906 INFO spawned: 'laravel-worker_00' with pid 9
+2024-05-06 17:59:24,909 INFO spawned: 'laravel-worker_01' with pid 10
+2024-05-06 17:59:24,912 INFO spawned: 'php-fpm' with pid 11
+2024-05-06 17:59:25,954 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-06 17:59:25,955 INFO success: laravel-worker_01 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-06 17:59:25,955 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)

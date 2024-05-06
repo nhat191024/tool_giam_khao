@@ -59,7 +59,12 @@ class DiemController extends Controller
                 $result = $this->diemModel->getDiemByIdDoi($doiThi);
                 $tongTim = $this->diemModel->tongTim($doiThi);
                 $diem = $this->diemModel->getAllDiemByIdDoi($doiThi);
-                $event = [$tongTim, $diem];
+
+                $event = [
+                    'tongTim' => $tongTim,
+                    'diem' => $diem,
+                    'id' => $result->id
+                ];
 
                 Event::dispatch(new Reacted($event));
 

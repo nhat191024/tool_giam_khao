@@ -32,7 +32,7 @@ class Reacted implements ShouldBroadcast
     public function broadcastOn(): array
     {
         return [
-            new Channel('reacted'),
+            new Channel('reacted.' . $this->data['id']),
         ];
     }
 

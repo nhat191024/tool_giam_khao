@@ -95,7 +95,7 @@ class diem extends Model
 
     private function countAllIconOneTeam($id)
     {
-        $result = DB::select('SELECT nd.id, dt.id, dt.ten_doi, nd.ho_ten,
+        $result = DB::select('SELECT nd.id as gk_id, dt.id, dt.ten_doi, nd.ho_ten,
         COUNT(IF(d.id_icon = 1, 1, NULL)) as sotim,
         COUNT(IF(d.id_icon = 2, 1, NULL)) as sothuong,
         COUNT(IF(d.id_icon = 3, 1, NULL)) as sohaha,
@@ -132,7 +132,7 @@ class diem extends Model
                 COUNT(IF(d.id_icon = 5, 1, NULL)) * 30
             ) as tongso FROM `diem` d WHERE d.id_doi_thi = ?
         ', [$id]);
-        
+
         return $result[0];
     }
 }
