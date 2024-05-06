@@ -57,8 +57,11 @@ class DiemController extends Controller
             ]);
             if ($diem) {
                 $result = $this->diemModel->getDiemByIdDoi($doiThi);
+                $tongTim = $this->diemModel->tongTim($doiThi);
+                $diem = $this->diemModel->getAllDiemByIdDoi($doiThi);
+                $event = [$tongTim, $diem];
 
-                Event::dispatch(new Reacted($result));
+                Event::dispatch(new Reacted($event));
 
                 // Trả về response thành công
                 return response()->json([
