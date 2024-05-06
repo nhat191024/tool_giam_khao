@@ -18,13 +18,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DiemController::class, 'addScreen'])->name('diem.add_screen')->middleware('checkAdminLogin');;
 
-// admin    
+// admin
 Route::get('/user/list', [UserController::class, 'list'])->name('admin.list')->middleware('checkAdminLogin');
 Route::get('/user/add', [UserController::class, 'add'])->name('admin.add')->middleware('checkAdminLogin');
 Route::get('/feedback/', [DiemController::class, 'addScreen'])->name('diem.add_screen')->middleware('checkAdminLogin');
 Route::get('/feedback/total', [DiemController::class, 'totalScreen'])->name('diem.total_screen')->middleware('checkAdminLogin');
 Route::post('/feedback/add', [DiemController::class, 'addScore'])->name('diem.add_score')->middleware('checkAdminLogin');
-Route::get('/client/{id}', [ClientController::class, 'show'])->name('diem.client');
+Route::get('/client/{id}', [ClientController::class, 'show'])->name('client.show');
 
 // client
 Route::get('/login', [UserController::class, 'showLogin'])->name('client.showlogin');

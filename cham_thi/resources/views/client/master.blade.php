@@ -31,261 +31,106 @@
                     <div class="row">
                         @foreach ($doiThi as $key => $x)
                             <div class="col-lg-12">
-                                <button class="btn btn-hover color-4" onclick="displayTeam('team-{{ $key + 1 }}')">
+                                <a href="{{ route('client.show', ['id' => $x->id]) }}" class="btn btn-hover color-4"
+                                    onclick="displayTeam('team-{{ $key + 1 }}')">
                                     {{ $x->ten_doi }}
-                                </button>
+                                </a>
                             </div>
                         @endforeach
                     </div>
                 </div>
 
                 <div class="col-lg-9 col-md-9">
-                    @foreach ($doiThi as $key => $x)
-                        <div class="card-box d-block" id="team-{{ $key+1 }}">
-                            <div class="front">
-                                <img src="{{ url('img/profile-image.jpg') }}" />
-                                <div class="details">
-                                    <h2>{{ $x->ten_doi }}</h2>
+
+                    <div class="card-box d-block" id="team-2">
+                        <div class="front">
+                            <img src="{{ url('img/') . '/' . $tenDoi['hinh_anh'] }}" />
+                            <div class="details">
+                                <h2>{{ $tenDoi['ten_doi'] }}</h2>
+                            </div>
+                            <div class="emoji d-flex justify-content-around mb-2">
+                                <div href="#" class="icon">
+                                    <img src="{{ url('img/red-heart_2764-fe0f.png') }}"
+                                        style="width: 50px; height: 50px" />
+                                    <span class="notification-badge badge badge-danger">{{ $tongTim->sotim }}</span>
                                 </div>
-                                <div class="emoji d-flex justify-content-around mb-2">
-                                    <div href="#" class="icon">
-                                        <img src="{{ url('img/red-heart_2764-fe0f.png') }}"
-                                            style="width: 50px; height: 50px">
-                                        <span class="notification-badge badge badge-danger">2</span>
-                                    </div>
-                                    <div href="#" class="icon">
-                                        <img src="{{ url('img/images-removebg-preview.png') }}"
-                                            style="width: 50px; height: 50px">
-                                        <span class="notification-badge badge badge-danger">2</span>
-                                    </div>
-                                    <div href="#" class="icon">
-                                        <img src="{{ url('img/grinning-face_1f600.png') }}"
-                                            style="width: 50px; height: 50px">
-                                        <span class="notification-badge badge badge-danger">2</span>
-                                    </div>
-                                    <div href="#" class="icon">
-                                        <img src="{{ url('img/face-with-open-mouth_1f62e.png') }}"
-                                            style="width: 50px; height: 50px">
-                                        <span class="notification-badge badge badge-danger">2</span>
-                                    </div>
-                                    <div href="#" class="icon">
-                                        <img src="{{ url('img/thumbs-up_1f44d.png') }}"
-                                            style="width: 50px; height: 50px">
-                                        <span class="notification-badge badge badge-danger">2</span>
-                                    </div>
+                                <div href="#" class="icon">
+                                    <img src="{{ url('img/images-removebg-preview.png') }}"
+                                        style="width: 50px; height: 50px" />
+                                    <span class="notification-badge badge badge-danger">{{ $tongTim->sothuong }}</span>
+                                </div>
+                                <div href="#" class="icon">
+                                    <img src="{{ url('img/grinning-face_1f600.png') }}"
+                                        style="width: 50px; height: 50px" />
+                                    <span class="notification-badge badge badge-danger">{{ $tongTim->sohaha }}</span>
+                                </div>
+                                <div href="#" class="icon">
+                                    <img src="{{ url('img/face-with-open-mouth_1f62e.png') }}"
+                                        style="width: 50px; height: 50px" />
+                                    <span class="notification-badge badge badge-danger">{{ $tongTim->sowow }}</span>
+                                </div>
+                                <div href="#" class="icon">
+                                    <img src="{{ url('img/thumbs-up_1f44d.png') }}"
+                                        style="width: 50px; height: 50px" />
+                                    <span class="notification-badge badge badge-danger">{{ $tongTim->solike }}</span>
                                 </div>
                             </div>
-                            <div class="back">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="table-responsive">
-                                                <table class="table table-striped">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">Tên giám khảo</th>
-                                                            <th scope="col">Đội Thi</th>
-                                                            <th scope="col">Điểm thi</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        @foreach ($giamKhao as $x)
-                                                            <tr class="">
-                                                                <td>
-                                                                    <h4 class="text-center mb-3">{{ $x->ho_ten }}
-                                                                    </h4>
-                                                                    <div
-                                                                        class="emoji d-flex justify-content-around mb-2">
-                                                                        <div href="#" class="icon">
-                                                                            <span>🥰</span>
-                                                                            <span
-                                                                                class="notification-badge badge badge-danger">2</span>
-                                                                        </div>
-                                                                        <div href="#" class="icon">
-                                                                            <span>💖</span>
-                                                                            <span
-                                                                                class="notification-badge badge badge-danger">2</span>
-                                                                        </div>
-                                                                        <div href="#" class="icon">
-                                                                            <span>👍</span>
-                                                                            <span
-                                                                                class="notification-badge badge badge-danger">2</span>
-                                                                        </div>
-                                                                        <div href="#" class="icon">
-                                                                            <span>🤩 </span>
-                                                                            <span
-                                                                                class="notification-badge badge badge-danger">2</span>
-                                                                        </div>
-                                                                        <div href="#" class="icon">
-                                                                            <span>😥</span>
-                                                                            <span
-                                                                                class="notification-badge badge badge-danger">2</span>
-                                                                        </div>
+                        </div>
+                        <div class="back">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Tên giám khảo</th>
+                                                        <th scope="col">Đội Thi</th>
+                                                        <th scope="col">Điểm thi</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($diem as $item)
+                                                        <tr class="">
+                                                            <td>
+                                                                <h4 class="text-center mb-3">{{ $item->ho_ten }}</h4>
+                                                                <div class="emoji d-flex justify-content-around mb-2">
+                                                                    <div href="#" class="icon">
+                                                                        <img src="{{ url('img/red-heart_2764-fe0f.png') }}"
+                                                                            style="width: 28px; height: 28px" />
+                                                                        <span
+                                                                            class="notification-badge badge badge-danger">{{ $item->sotim }}</span>
                                                                     </div>
-                                                                </td>
-                                                                <td>Team CNTT 1</td>
-                                                                <td>100</td>
-                                                            </tr>
-                                                        @endforeach
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-
-                    {{-- <div class="card-box d-none" id="team-2">
-                        <div class="front">
-                            <img src="profile-image.jpg" />
-                            <div class="details">
-                                <h2>Team CNTT 2</h2>
-                            </div>
-                            <div class="emoji d-flex justify-content-around mb-2">
-                                <div href="#" class="icon">
-                                    <span>🥰</span>
-                                    <span class="notification-badge badge badge-danger">2</span>
-                                </div>
-                                <div href="#" class="icon">
-                                    <span>💖</span>
-                                    <span class="notification-badge badge badge-danger">2</span>
-                                </div>
-                                <div href="#" class="icon">
-                                    <span>👍</span>
-                                    <span class="notification-badge badge badge-danger">2</span>
-                                </div>
-                                <div href="#" class="icon">
-                                    <span>🤩 </span>
-                                    <span class="notification-badge badge badge-danger">2</span>
-                                </div>
-                                <div href="#" class="icon">
-                                    <span>😥</span>
-                                    <span class="notification-badge badge badge-danger">2</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="back">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="table-responsive">
-                                            <table class="table table-striped">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">Tên giám khảo</th>
-                                                        <th scope="col">Đội Thi</th>
-                                                        <th scope="col">Điểm thi</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr class="">
-                                                        <td>
-                                                            <h4 class="text-center mb-3">Vũ Chí Thành</h4>
-                                                            <div class="emoji d-flex justify-content-around mb-2">
-                                                                <div href="#" class="icon">
-                                                                    <span>🥰</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
+                                                                    <div href="#" class="icon">
+                                                                        <img src="{{ url('img/images-removebg-preview.png') }}"
+                                                                            style="width: 28px; height: 28px" />
+                                                                        <span
+                                                                            class="notification-badge badge badge-danger">{{ $item->sothuong }}</span>
+                                                                    </div>
+                                                                    <div href="#" class="icon">
+                                                                        <img src="{{ url('img/grinning-face_1f600.png') }}"
+                                                                            style="width: 28px; height: 28px" />
+                                                                        <span
+                                                                            class="notification-badge badge badge-danger">{{ $item->sohaha }}</span>
+                                                                    </div>
+                                                                    <div href="#" class="icon">
+                                                                        <img src="{{ url('img/face-with-open-mouth_1f62e.png') }}"
+                                                                            style="width: 28px; height: 28px" />
+                                                                        <span
+                                                                            class="notification-badge badge badge-danger">{{ $item->sowow }}</span>
+                                                                    </div>
+                                                                    <div href="#" class="icon">
+                                                                        <img src="{{ url('img/thumbs-up_1f44d.png') }}"
+                                                                            style="width: 28px; height: 28px" />
+                                                                        <span
+                                                                            class="notification-badge badge badge-danger">{{ $item->solike }}</span>
+                                                                    </div>
                                                                 </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>💖</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>👍</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>🤩 </span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>😥</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>Team CNTT 1</td>
-                                                        <td>100</td>
-                                                    </tr>
-
-                                                    <tr class="">
-                                                        <td>
-                                                            <h4 class="text-center mb-3">
-                                                                Phạm Thị Vân Anh
-                                                            </h4>
-                                                            <div class="emoji d-flex justify-content-around mb-2">
-                                                                <div href="#" class="icon">
-                                                                    <span>🥰</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>💖</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>👍</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>🤩 </span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>😥</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>Team CNTT 1</td>
-                                                        <td>100</td>
-                                                    </tr>
-
-                                                    <tr class="">
-                                                        <td>
-                                                            <h4 class="text-center mb-3">Phạm Tuấn Anh</h4>
-                                                            <div class="emoji d-flex justify-content-around mb-2">
-                                                                <div href="#" class="icon">
-                                                                    <span>🥰</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>💖</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>👍</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>🤩 </span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>😥</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>Team CNTT 1</td>
-                                                        <td>100</td>
-                                                    </tr>
+                                                            </td>
+                                                            <td>{{ $item->ten_doi }}</td>
+                                                            <td>{{ $item->tongso }}</td>
+                                                        </tr>
+                                                    @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
@@ -294,480 +139,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="card-box d-none" id="team-3">
-                        <div class="front">
-                            <img src="profile-image.jpg" />
-                            <div class="details">
-                                <h2>Team CNTT 3</h2>
-                            </div>
-                            <div class="emoji d-flex justify-content-around mb-2">
-                                <div href="#" class="icon">
-                                    <span>🥰</span>
-                                    <span class="notification-badge badge badge-danger">2</span>
-                                </div>
-                                <div href="#" class="icon">
-                                    <span>💖</span>
-                                    <span class="notification-badge badge badge-danger">2</span>
-                                </div>
-                                <div href="#" class="icon">
-                                    <span>👍</span>
-                                    <span class="notification-badge badge badge-danger">2</span>
-                                </div>
-                                <div href="#" class="icon">
-                                    <span>🤩 </span>
-                                    <span class="notification-badge badge badge-danger">2</span>
-                                </div>
-                                <div href="#" class="icon">
-                                    <span>😥</span>
-                                    <span class="notification-badge badge badge-danger">2</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="back">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="table-responsive">
-                                            <table class="table table-striped">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">Tên giám khảo</th>
-                                                        <th scope="col">Đội Thi</th>
-                                                        <th scope="col">Điểm thi</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr class="">
-                                                        <td>
-                                                            <h4 class="text-center mb-3">Vũ Chí Thành</h4>
-                                                            <div class="emoji d-flex justify-content-around mb-2">
-                                                                <div href="#" class="icon">
-                                                                    <span>🥰</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>💖</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>👍</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>🤩 </span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>😥</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>Team CNTT 1</td>
-                                                        <td>100</td>
-                                                    </tr>
-
-                                                    <tr class="">
-                                                        <td>
-                                                            <h4 class="text-center mb-3">
-                                                                Phạm Thị Vân Anh
-                                                            </h4>
-                                                            <div class="emoji d-flex justify-content-around mb-2">
-                                                                <div href="#" class="icon">
-                                                                    <span>🥰</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>💖</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>👍</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>🤩 </span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>😥</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>Team CNTT 1</td>
-                                                        <td>100</td>
-                                                    </tr>
-
-                                                    <tr class="">
-                                                        <td>
-                                                            <h4 class="text-center mb-3">Phạm Tuấn Anh</h4>
-                                                            <div class="emoji d-flex justify-content-around mb-2">
-                                                                <div href="#" class="icon">
-                                                                    <span>🥰</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>💖</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>👍</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>🤩 </span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>😥</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>Team CNTT 1</td>
-                                                        <td>100</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card-box d-none" id="team-4">
-                        <div class="front">
-                            <img src="profile-image.jpg" />
-                            <div class="details">
-                                <h2>Team CNTT 4</h2>
-                            </div>
-                            <div class="emoji d-flex justify-content-around mb-2">
-                                <div href="#" class="icon">
-                                    <span>🥰</span>
-                                    <span class="notification-badge badge badge-danger">2</span>
-                                </div>
-                                <div href="#" class="icon">
-                                    <span>💖</span>
-                                    <span class="notification-badge badge badge-danger">2</span>
-                                </div>
-                                <div href="#" class="icon">
-                                    <span>👍</span>
-                                    <span class="notification-badge badge badge-danger">2</span>
-                                </div>
-                                <div href="#" class="icon">
-                                    <span>🤩 </span>
-                                    <span class="notification-badge badge badge-danger">2</span>
-                                </div>
-                                <div href="#" class="icon">
-                                    <span>😥</span>
-                                    <span class="notification-badge badge badge-danger">2</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="back">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="table-responsive">
-                                            <table class="table table-striped">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">Tên giám khảo</th>
-                                                        <th scope="col">Đội Thi</th>
-                                                        <th scope="col">Điểm thi</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr class="">
-                                                        <td>
-                                                            <h4 class="text-center mb-3">Vũ Chí Thành</h4>
-                                                            <div class="emoji d-flex justify-content-around mb-2">
-                                                                <div href="#" class="icon">
-                                                                    <span>🥰</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>💖</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>👍</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>🤩 </span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>😥</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>Team CNTT 1</td>
-                                                        <td>100</td>
-                                                    </tr>
-
-                                                    <tr class="">
-                                                        <td>
-                                                            <h4 class="text-center mb-3">
-                                                                Phạm Thị Vân Anh
-                                                            </h4>
-                                                            <div class="emoji d-flex justify-content-around mb-2">
-                                                                <div href="#" class="icon">
-                                                                    <span>🥰</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>💖</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>👍</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>🤩 </span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>😥</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>Team CNTT 1</td>
-                                                        <td>100</td>
-                                                    </tr>
-
-                                                    <tr class="">
-                                                        <td>
-                                                            <h4 class="text-center mb-3">Phạm Tuấn Anh</h4>
-                                                            <div class="emoji d-flex justify-content-around mb-2">
-                                                                <div href="#" class="icon">
-                                                                    <span>🥰</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>💖</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>👍</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>🤩 </span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>😥</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>Team CNTT 1</td>
-                                                        <td>100</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card-box d-none" id="team-5">
-                        <div class="front">
-                            <img src="profile-image.jpg" />
-                            <div class="details">
-                                <h2>Team CNTT 5</h2>
-                            </div>
-                            <div class="emoji d-flex justify-content-around mb-2">
-                                <div href="#" class="icon">
-                                    <span>🥰</span>
-                                    <span class="notification-badge badge badge-danger">2</span>
-                                </div>
-                                <div href="#" class="icon">
-                                    <span>💖</span>
-                                    <span class="notification-badge badge badge-danger">2</span>
-                                </div>
-                                <div href="#" class="icon">
-                                    <span>👍</span>
-                                    <span class="notification-badge badge badge-danger">2</span>
-                                </div>
-                                <div href="#" class="icon">
-                                    <span>🤩 </span>
-                                    <span class="notification-badge badge badge-danger">2</span>
-                                </div>
-                                <div href="#" class="icon">
-                                    <span>😥</span>
-                                    <span class="notification-badge badge badge-danger">2</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="back">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="table-responsive">
-                                            <table class="table table-striped">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">Tên giám khảo</th>
-                                                        <th scope="col">Đội Thi</th>
-                                                        <th scope="col">Điểm thi</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr class="">
-                                                        <td>
-                                                            <h4 class="text-center mb-3">Vũ Chí Thành</h4>
-                                                            <div class="emoji d-flex justify-content-around mb-2">
-                                                                <div href="#" class="icon">
-                                                                    <span>🥰</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>💖</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>👍</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>🤩 </span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>😥</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>Team CNTT 1</td>
-                                                        <td>100</td>
-                                                    </tr>
-
-                                                    <tr class="">
-                                                        <td>
-                                                            <h4 class="text-center mb-3">
-                                                                Phạm Thị Vân Anh
-                                                            </h4>
-                                                            <div class="emoji d-flex justify-content-around mb-2">
-                                                                <div href="#" class="icon">
-                                                                    <span>🥰</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>💖</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>👍</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>🤩 </span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>😥</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>Team CNTT 1</td>
-                                                        <td>100</td>
-                                                    </tr>
-
-                                                    <tr class="">
-                                                        <td>
-                                                            <h4 class="text-center mb-3">Phạm Tuấn Anh</h4>
-                                                            <div class="emoji d-flex justify-content-around mb-2">
-                                                                <div href="#" class="icon">
-                                                                    <span>🥰</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>💖</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>👍</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>🤩 </span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                                <div href="#" class="icon">
-                                                                    <span>😥</span>
-                                                                    <span
-                                                                        class="notification-badge badge badge-danger">2</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>Team CNTT 1</td>
-                                                        <td>100</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
         </div>
