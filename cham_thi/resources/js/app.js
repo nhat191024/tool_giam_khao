@@ -11,7 +11,7 @@ window.Echo = new Echo({
     broadcaster: 'socket.io',
     // host: 'http://localhost' + ':6001',
     // host: 'http://103.163.217.193' + ':6001',
-    host: window.location.hostname + ':6001',
+    host: window.location.hostname,
     client: io,
 });
 
@@ -21,7 +21,7 @@ window.Echo = new Echo({
 //     client: io,
 // });
 
-console.log(window.Echo);
+// console.log(window.Echo);
 
 
 window.Echo.channel('test-channel')
