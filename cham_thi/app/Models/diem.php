@@ -25,6 +25,24 @@ class diem extends Model
         return $result;
     }
 
+    public function getAllDiemByIdDoi($id)
+    {
+        $result = $this->countAllIconOneTeam($id);
+        return $result;
+    }
+
+    public function tongTim($id)
+    {
+        $result = $this->countAllScore($id);
+        return $result;
+    }
+
+    public function tenDoi($id)
+    {
+        $result = doi_thi::where('id', $id)->first();
+        return $result;
+    }
+
     private function countIcon()
     {
         $idGiamKhao = Auth::user()->id;
@@ -73,5 +91,48 @@ class diem extends Model
         GROUP BY nd.id, dt.id, dt.ten_doi, nd.ho_ten;
         ', [$idGiamKhao, $id]);
         return $result[0] ?? null;
+    }
+
+    private function countAllIconOneTeam($id)
+    {
+        $result = DB::select('SELECT nd.id, dt.id, dt.ten_doi, nd.ho_ten,
+        COUNT(IF(d.id_icon = 1, 1, NULL)) as sotim,
+        COUNT(IF(d.id_icon = 2, 1, NULL)) as sothuong,
+        COUNT(IF(d.id_icon = 3, 1, NULL)) as sohaha,
+        COUNT(IF(d.id_icon = 4, 1, NULL)) as sowow,
+        COUNT(IF(d.id_icon = 5, 1, NULL)) as solike,
+        (
+            COUNT(IF(d.id_icon = 1, 1, NULL)) * 50 +
+            COUNT(IF(d.id_icon = 2, 1, NULL)) * 45 +
+            COUNT(IF(d.id_icon = 3, 1, NULL)) * 40 +
+            COUNT(IF(d.id_icon = 4, 1, NULL)) * 35 +
+            COUNT(IF(d.id_icon = 5, 1, NULL)) * 30
+        ) as tongso
+        FROM `doi_thi` dt
+        LEFT JOIN `diem` d ON d.id_doi_thi = dt.id
+        LEFT JOIN `nguoi_dung` nd ON d.id_giam_khao = nd.id
+        WHERE dt.id = ?
+        GROUP BY nd.id, dt.id, dt.ten_doi, nd.ho_ten;
+        ', [$id]);
+        return $result;
+    }
+
+    private function countAllScore($id)
+    {
+        $result = DB::select('SELECT COUNT(IF(d.id_icon = 1, 1, NULL)) as sotim,
+            COUNT(IF(d.id_icon = 2, 1, NULL)) as sothuong,
+            COUNT(IF(d.id_icon = 3, 1, NULL)) as sohaha,
+            COUNT(IF(d.id_icon = 4, 1, NULL)) as sowow,
+            COUNT(IF(d.id_icon = 5, 1, NULL)) as solike,
+            (
+                COUNT(IF(d.id_icon = 1, 1, NULL)) * 50 +
+                COUNT(IF(d.id_icon = 2, 1, NULL)) * 45 +
+                COUNT(IF(d.id_icon = 3, 1, NULL)) * 40 +
+                COUNT(IF(d.id_icon = 4, 1, NULL)) * 35 +
+                COUNT(IF(d.id_icon = 5, 1, NULL)) * 30
+            ) as tongso FROM `diem` d WHERE d.id_doi_thi = ?
+        ', [$id]);
+        
+        return $result[0];
     }
 }
