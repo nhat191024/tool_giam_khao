@@ -774,7 +774,14 @@
     </main>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ mix('dist/main.js') }}"></script>
     <script type="text/javascript">
+
+        window.Echo.channel('reacted')
+            .listen('Reacted', (e) => {
+                console.log(e);
+            });
+
         function displayTeam(id) {
             let cardBoxHide = document.querySelector(".d-block");
             if (cardBoxHide) {
@@ -787,8 +794,9 @@
                 cardBoxDisplay.classList.add("d-block");
             }
         }
+
     </script>
-    <script src="main.js"></script>
+    {{-- <script src="main.js"></script> --}}
 </body>
 
 </html>

@@ -2,27 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\Reacted;
 use App\Models\diem;
 use App\Models\doi_thi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Event;
 
 class DiemController extends Controller
 {
     public $diemModel;
-    function __construct()  
+
+    function __construct()
     {
         $this->diemModel = new diem();
     }
+
     //
     public function addScreen()
     {
         $doiThi = doi_thi::all();
-        $idFirst  = $doiThi->first()->id;
+        $idFirst = $doiThi->first()->id;
         // $diem = $this->diemModel->getDiem();
         $diem = $this->diemModel->getDiemByIdDoi($idFirst);
         return view('admin.feedback.screen', compact('doiThi', 'diem'));
     }
+
     //
     public function totalScreen()
     {
@@ -52,6 +57,9 @@ class DiemController extends Controller
             ]);
             if ($diem) {
                 $result = $this->diemModel->getDiemByIdDoi($doiThi);
+
+                Event::dispatch(new Reacted($result));
+
                 // Trả về response thành công
                 return response()->json([
                     'success' => true,
