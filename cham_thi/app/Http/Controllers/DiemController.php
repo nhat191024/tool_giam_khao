@@ -63,11 +63,12 @@ class DiemController extends Controller
                 $event = [
                     'tongTim' => $tongTim,
                     'diem' => $diem,
-                    'id' => $result->id
+                    'id' => $result->id,
+                    'idIcon' => $id,
                 ];
 
                 Event::dispatch(new Reacted($event));
-
+                dd($event);
                 // Trả về response thành công
                 return response()->json([
                     'success' => true,
