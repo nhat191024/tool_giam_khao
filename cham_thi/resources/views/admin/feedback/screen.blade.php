@@ -22,7 +22,7 @@
                     </div>
                     <div class="d-flex font-weight-bold font-size-20 mb-4">
                         <p class="d-flex align-items-center">
-                            <img src="{{url('img/grinning-face_1f600.png')}}" style="width: 75px; height: 75px" class="mx-3" />
+                            <img src="{{url('img/chuhe.png')}}" style="width: 75px; height: 75px" class="mx-3" />
                             <span class="score-number" id="grinning-face-score">{{ $diem->sohaha }}</span>
                         </p>
                         <p class="d-flex align-items-center">
@@ -56,7 +56,7 @@
                     style="width: 65px; height: 65px" />
                 <img id="2" src="{{url('img/images-removebg-preview.png')}}" onclick="selectImage(this, this.id)"
                     style="width: 65px" class="ml-3" />
-                <img id="3" src="{{url('img/grinning-face_1f600.png')}}" onclick="selectImage(this, this.id)"
+                <img id="3" src="{{url('img/chuhe.png')}}" onclick="selectImage(this, this.id)"
                     style="width: 65px" class="ml-3" />
                 <img id="4" src="{{url('img/face-with-open-mouth_1f62e.png')}}" onclick="selectImage(this, this.id)"
                     style="width: 65px" class="ml-3" />
@@ -83,23 +83,23 @@
                     <div class="d-flex justify-content-center">
                         <div class="d-flex flex-column align-items-center justify-content-center ">
                             <img src="{{url('img/red-heart_2764-fe0f.png')}}" style="width: 40px; height: 40px">
-                            <p>50</p>
+                            <p>100</p>
                         </div>
                         <div class="d-flex flex-column align-items-center justify-content-center ml-3">
                             <img src="{{url('img/images-removebg-preview.png')}}" style="width: 40px">
-                            <p>40</p>
-                        </div>
-                        <div class="d-flex flex-column align-items-center justify-content-center ml-3">
-                            <img src="{{url('img/grinning-face_1f600.png')}}" style="width: 40px">
-                            <p>30</p>
-                        </div>
-                        <div class="d-flex flex-column align-items-center justify-content-center ml-3">
-                            <img src="{{url('img/face-with-open-mouth_1f62e.png')}}" style="width: 40px">
-                            <p>20</p>
+                            <p>70</p>
                         </div>
                         <div class="d-flex flex-column align-items-center justify-content-center ml-3">
                             <img src="{{url('img/thumbs-up_1f44d.png')}}" style="width: 40px">
-                            <p>10</p>
+                            <p>50</p>
+                        </div>
+                        <div class="d-flex flex-column align-items-center justify-content-center ml-3">
+                            <img src="{{url('img/face-with-open-mouth_1f62e.png')}}" style="width: 40px">
+                            <p>30</p>
+                        </div>
+                        <div class="d-flex flex-column align-items-center justify-content-center ml-3">
+                            <img src="{{url('img/chuhe.png')}}" style="width: 40px">
+                            <p>-30</p>
                         </div>
                     </div>
                     <p>4. Có thể gửi điểm cho nhiều đội thi khác nhau</p>

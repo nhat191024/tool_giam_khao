@@ -68,7 +68,6 @@ class DiemController extends Controller
                 ];
 
                 Event::dispatch(new Reacted($event));
-                dd($event);
                 // Trả về response thành công
                 return response()->json([
                     'success' => true,

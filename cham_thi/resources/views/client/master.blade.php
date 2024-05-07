@@ -62,7 +62,7 @@
                                         id="so-thuong">{{ $tongTim->sothuong }}</span>
                                 </div>
                                 <div href="#" class="icon">
-                                    <img src="{{ url('img/grinning-face_1f600.png') }}"
+                                    <img src="{{ url('img/chuhe.png') }}"
                                         style="width: 50px; height: 50px" />
                                     <span class="notification-badge badge badge-danger"
                                         id="so-haha">{{ $tongTim->sohaha }}</span>
@@ -113,7 +113,7 @@
                                                                             class="notification-badge badge badge-danger sothuong">{{ $item->sothuong }}</span>
                                                                     </div>
                                                                     <div href="#" class="icon">
-                                                                        <img src="{{ url('img/grinning-face_1f600.png') }}"
+                                                                        <img src="{{ url('img/chuhe.png') }}"
                                                                             style="width: 28px; height: 28px" />
                                                                         <span
                                                                             class="notification-badge badge badge-danger sohaha">{{ $item->sohaha }}</span>
@@ -196,7 +196,7 @@
                                             class="notification-badge badge badge-danger sothuong">${item.sothuong}</span>
                                     </div>
                                     <div href="#" class="icon">
-                                        <img src="{{ url('img/grinning-face_1f600.png') }}"
+                                        <img src="{{ url('img/chuhe.png') }}"
                                              style="width: 28px; height: 28px"/>
                                         <span
                                             class="notification-badge badge badge-danger sohaha">${item.sohaha}</span>
@@ -249,7 +249,7 @@
             var container = document.getElementById("animate");
             var circles = [];
             var emoji = ["{{ url('img/red-heart_2764-fe0f.png') }}", "{{ url('img/images-removebg-preview.png') }}",
-                "{{ url('img/grinning-face_1f600.png') }}", "{{ url('img/face-with-open-mouth_1f62e.png') }}",
+                "{{ url('img/chuhe.png') }}", "{{ url('img/face-with-open-mouth_1f62e.png') }}",
                 "{{ url('img/thumbs-up_1f44d.png') }}"
             ]
 
