@@ -315,7 +315,7 @@
                 "{{ url('img/thumbs-up_1f44d.png') }}"
             ]
 
-            for (var i = 0; i < 15; i++) {
+            for (var i = 0; i < 1; i++) {
                 addCircle(
                     i * 150,
                     [10 + 0, 300],
@@ -416,6 +416,96 @@
             }
             animate();
         }
+        animateIcon(1);
+        animateIcon(2);
+        animateIcon(3);
+        animateIcon(4);
+        animateIcon(5);
+        animateIcon(1);
+        animateIcon(2);
+        animateIcon(3);
+        animateIcon(4);
+        animateIcon(5);
+        animateIcon(1);
+        animateIcon(2);
+        animateIcon(3);
+        animateIcon(4);
+        animateIcon(5);
+        animateIcon(1);
+        animateIcon(2);
+        animateIcon(3);
+        animateIcon(4);
+        animateIcon(5);
+        animateIcon(1);
+        animateIcon(2);
+        animateIcon(3);
+        animateIcon(4);
+        animateIcon(5);
+        animateIcon(1);
+        animateIcon(2);
+        animateIcon(3);
+        animateIcon(4);
+        animateIcon(5);
+        animateIcon(1);
+        animateIcon(2);
+        animateIcon(3);
+        animateIcon(4);
+        animateIcon(5);
+        animateIcon(1);
+        animateIcon(2);
+        animateIcon(3);
+        animateIcon(4);
+        animateIcon(5);
+        animateIcon(1);
+        animateIcon(2);
+        animateIcon(3);
+        animateIcon(4);
+        animateIcon(5);
+        animateIcon(1);
+        animateIcon(2);
+        animateIcon(3);
+        animateIcon(4);
+        animateIcon(5);
+        animateIcon(1);
+        animateIcon(2);
+        animateIcon(3);
+        animateIcon(4);
+        animateIcon(5);
+        animateIcon(1);
+        animateIcon(2);
+        animateIcon(3);
+        animateIcon(4);
+        animateIcon(5);
+        animateIcon(1);
+        animateIcon(2);
+        animateIcon(3);
+        animateIcon(4);
+        animateIcon(5);
+        animateIcon(1);
+        animateIcon(2);
+        animateIcon(3);
+        animateIcon(4);
+        animateIcon(5);
+        animateIcon(1);
+        animateIcon(2);
+        animateIcon(3);
+        animateIcon(4);
+        animateIcon(5);
+        animateIcon(1);
+        animateIcon(2);
+        animateIcon(3);
+        animateIcon(4);
+        animateIcon(5);
+        animateIcon(1);
+        animateIcon(2);
+        animateIcon(3);
+        animateIcon(4);
+        animateIcon(5);
+        animateIcon(1);
+        animateIcon(2);
+        animateIcon(3);
+        animateIcon(4);
+        animateIcon(5);
     </script>
     {{-- <script src="main.js"></script> --}}
 </body>
