@@ -130,13 +130,13 @@ class diem extends Model
             COUNT(IF(d.id_icon = 3, 1, NULL)) as sohaha,
             COUNT(IF(d.id_icon = 4, 1, NULL)) as sowow,
             COUNT(IF(d.id_icon = 5, 1, NULL)) as solike,
-            (
-                COUNT(IF(d.id_icon = 1, 1, NULL)) * 50 +
-                COUNT(IF(d.id_icon = 2, 1, NULL)) * 45 +
-                COUNT(IF(d.id_icon = 3, 1, NULL)) * 40 +
-                COUNT(IF(d.id_icon = 4, 1, NULL)) * 35 +
-                COUNT(IF(d.id_icon = 5, 1, NULL)) * 30
-            ) as tongso FROM `diem` d WHERE d.id_doi_thi = ?
+        (
+            COUNT(IF(d.id_icon = 1, 1, NULL)) * 100 +
+            COUNT(IF(d.id_icon = 2, 1, NULL)) * 70 +
+            COUNT(IF(d.id_icon = 3, 1, NULL)) * -30 +
+            COUNT(IF(d.id_icon = 4, 1, NULL)) * 30 +
+            COUNT(IF(d.id_icon = 5, 1, NULL)) * 50
+        ) as tongso FROM `diem` d WHERE d.id_doi_thi = ?
         ', [$id]);
 
         return $result[0];
