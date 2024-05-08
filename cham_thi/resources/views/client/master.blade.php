@@ -207,6 +207,7 @@
             })
         }
 
+
         window.Echo.channel(`reacted.${id}`)
             .listen('Reacted', (e) => {
                 // console.log(e);
@@ -228,7 +229,7 @@
 
                 updateTotalScore(tongDiem)
 
-                animate(idIcon);
+                animateIcon(idIcon);
 
                 diem.forEach(item => {
                     const giamKhaoTr = $(`#giam-khao-${item.gk_id}`);
@@ -410,6 +411,7 @@
             }
             animate();
         }
+
     </script>
     {{-- <script src="main.js"></script> --}}
 </body>
