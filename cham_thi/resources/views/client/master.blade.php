@@ -8,6 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ url('css/styles.css') }}" />
+    <style>
+        .point-team:hover .front {
+            transform: rotateY(0deg);
+        }
+    </style>
 </head>
 
 <body>
@@ -31,7 +36,8 @@
                     <div class="row">
                         @foreach ($doiThi as $key => $x)
                             <div class="col-lg-12">
-                                <a href="{{ route('client.show', ['id' => $x->id]) }}" class="btn btn-hover color-4"
+                                <a href="{{ route('client.show', ['id' => $x->id]) }}"
+                                    class="btn btn-hover color-4 d-flex align-items-center justify-content-center"
                                     onclick="displayTeam('team-{{ $key + 1 }}')">
                                     {{ $x->ten_doi }}
                                 </a>
@@ -207,7 +213,6 @@
             })
         }
 
-
         window.Echo.channel(`reacted.${id}`)
             .listen('Reacted', (e) => {
                 // console.log(e);
@@ -360,7 +365,7 @@
                         80 + Math.random() * 4,
                         color, {
                             x: -0.15 + Math.random() * 0.3,
-                            y: 1 + Math.random() * 1,
+                            y: 1 + Math.random() * 5,
                         },
                         range
                     );
@@ -388,8 +393,8 @@
 
                 this.update = function() {
                     if (_this.y > 800) {
-                        _this.y = 80 + Math.random() * 4;
-                        _this.x = _this.range[0] + Math.random() * _this.range[1];
+                        // _this.y = 80 + Math.random() * 4;
+                        // _this.x = _this.range[0] + Math.random() * _this.range[1];
                     }
                     _this.y += _this.v.y;
                     _this.x += _this.v.x;
@@ -411,7 +416,6 @@
             }
             animate();
         }
-
     </script>
     {{-- <script src="main.js"></script> --}}
 </body>
