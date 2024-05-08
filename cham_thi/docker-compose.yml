@@ -36,13 +36,13 @@ services:
     volumes:
       - .docker/data/db:/var/lib/mysql/
 
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    restart: unless-stopped
-    ports:
-      - 8080:80
-    environment:
-      PMA_HOST: db
+#  phpmyadmin:
+#    image: phpmyadmin/phpmyadmin
+#    restart: unless-stopped
+#    ports:
+#      - 8080:80
+#    environment:
+#      PMA_HOST: db
 
   laravel_echo_server:
     build:
