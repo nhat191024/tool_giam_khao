@@ -40,7 +40,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-9 col-md-9">
+                <div class="col-lg-6 d-flex align-items-center justify-content-center">
 
                     <div class="card-box d-block" id="team-2">
                         <div class="front">
@@ -62,8 +62,7 @@
                                         id="so-thuong">{{ $tongTim->sothuong }}</span>
                                 </div>
                                 <div href="#" class="icon">
-                                    <img src="{{ url('img/chuhe.png') }}"
-                                        style="width: 50px; height: 50px" />
+                                    <img src="{{ url('img/chuhe.png') }}" style="width: 50px; height: 50px" />
                                     <span class="notification-badge badge badge-danger"
                                         id="so-haha">{{ $tongTim->sohaha }}</span>
                                 </div>
@@ -145,6 +144,43 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="col-lg-3 d-flex align-items-center justify-content-center">
+                    <div class="card-box point-team">
+                        <div class="front">
+                            <h4 class="text-center mt-2">Bảng Điểm</h4>
+
+                            <div class="team-1">
+                                <div class="row">
+                                    <table id="diemTable" class="table table-striped m-4">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Đội Thi</th>
+                                                <th scope="col">Điểm thi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($tongDiem as $item)
+                                                <tr class="" id="">
+                                                    <td>{{ $item->ten_doi }}</td>
+                                                    <td class="tongso">{{ $item->tongso }}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                    {{-- <div class="col-md-8">
+                                        <img src="{{ url('img/') . '/' . $item->hinh_anh }}" alt="" class="img-fluid img-team" />
+                                        <h6 class="d-inline">{{ $item->ten_doi }}</h6>
+                                    </div>
+                                    <div class="col-md-4 d-flex align-items-center">
+                                        <span style="font-size: 15px">{{ $item->tongso }}</span>
+                                    </div> --}}
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -153,6 +189,23 @@
     <script src="{{ mix('dist/main.js') }}"></script>
     <script type="text/javascript">
         const id = @json(request()->id);
+
+        function updateTotalScore(dataTotal) {
+            var tableBody = document.querySelector('#diemTable tbody');
+            tableBody.innerHTML = '';
+            dataTotal.forEach(function(item) {
+                var row = document.createElement('tr');
+                var cell1 = document.createElement('td');
+                var cell2 = document.createElement('td');
+
+                cell1.textContent = item.ten_doi;
+                cell2.textContent = item.tongso;
+
+                row.appendChild(cell1);
+                row.appendChild(cell2);
+                tableBody.appendChild(row);
+            })
+        }
 
         window.Echo.channel(`reacted.${id}`)
             .listen('Reacted', (e) => {
@@ -164,6 +217,7 @@
                     diem,
                     tongTim,
                     idIcon,
+                    tongDiem
                 } = e.data;
 
                 $('#so-tim').text(tongTim.sotim);
@@ -171,6 +225,8 @@
                 $('#so-haha').text(tongTim.sohaha);
                 $('#so-wow').text(tongTim.sowow);
                 $('#so-like').text(tongTim.solike);
+
+                updateTotalScore(tongDiem)
 
                 animate(idIcon);
 

@@ -33,7 +33,13 @@ class diem extends Model
 
     public function tongTim($id)
     {
-        $result = $this->countAllScore($id);
+        $result = $this->countAllScoreByDoiThi($id);
+        return $result;
+    }
+
+    public function tongDiemToanDoi()
+    {
+        $result = $this->countAllScore();
         return $result;
     }
 
@@ -117,7 +123,7 @@ class diem extends Model
         return $result;
     }
 
-    private function countAllScore($id)
+    private function countAllScoreByDoiThi($id)
     {
         $result = DB::select('SELECT COUNT(IF(d.id_icon = 1, 1, NULL)) as sotim,
             COUNT(IF(d.id_icon = 2, 1, NULL)) as sothuong,
@@ -134,5 +140,25 @@ class diem extends Model
         ', [$id]);
 
         return $result[0];
+    }
+
+    private function countAllScore()
+    {
+        $result = DB::select('SELECT dt.ten_doi, dt.hinh_anh, COUNT(IF(d.id_icon = 1, 1, NULL)) as sotim,
+        COUNT(IF(d.id_icon = 2, 1, NULL)) as sothuong,
+        COUNT(IF(d.id_icon = 3, 1, NULL)) as sohaha,
+        COUNT(IF(d.id_icon = 4, 1, NULL)) as sowow,
+        COUNT(IF(d.id_icon = 5, 1, NULL)) as solike,
+        (
+            COUNT(IF(d.id_icon = 1, 1, NULL)) * 100 +
+            COUNT(IF(d.id_icon = 2, 1, NULL)) * 70 +
+            COUNT(IF(d.id_icon = 3, 1, NULL)) * -30 +
+            COUNT(IF(d.id_icon = 4, 1, NULL)) * 30 +
+            COUNT(IF(d.id_icon = 5, 1, NULL)) * 50
+        ) as tongso from doi_thi dt left JOIN diem d on dt.id = d.id_doi_thi
+        GROUP BY dt.ten_doi, dt.hinh_anh
+        ');
+
+        return $result;
     }
 }

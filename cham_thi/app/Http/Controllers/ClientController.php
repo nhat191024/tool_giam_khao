@@ -24,6 +24,7 @@ class ClientController extends Controller
         $tongTim = $this->diemModel->tongTim($idDoiThi);
         $diem = $this->diemModel->getAllDiemByIdDoi($idDoiThi);
         $giamKhao = nguoi_dung::where('quyen', 2)->get();
-        return view('client.master', compact('doiThi', 'giamKhao', 'diem', 'tenDoi', 'tongTim'));
+        $tongDiem = $this->diemModel->tongDiemToanDoi();
+        return view('client.master', compact('doiThi', 'giamKhao', 'diem', 'tenDoi', 'tongTim','tongDiem'));
     }
 }
