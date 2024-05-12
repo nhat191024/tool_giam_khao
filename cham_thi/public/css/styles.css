@@ -187,3 +187,17 @@ main {
   width: 100%;
   position: fixed;
 }
+
+.card-box,
+.point-team {
+  width: inherit;
+}
+
+.point-team .img-team {
+  width: 50px !important;
+  height: 50px !important;
+}
+
+.point-team .front {
+  gap: 0 !important;
+}

@@ -8,7 +8,7 @@ use App\Models\cuoc_thi;
 use App\Models\danh_sach_giam_khao;
 use App\Models\doi_thi;
 use Illuminate\Database\Seeder;
-use App\Models\icons;
+use App\Models\Icons;
 use App\Models\nguoi_dung;
 use Carbon\Carbon;
 
@@ -59,27 +59,27 @@ class DatabaseSeeder extends Seeder
             'quyen' => 2,
         ]);
 
-        icons::create([
+        Icons::create([
             'hinh_anh' => 'tim.png',
             'diem' => 50,
         ]);
 
-        icons::create([
+        Icons::create([
             'hinh_anh' => 'thuong_thuong.png',
             'diem' => 40,
         ]);
 
-        icons::create([
+        Icons::create([
             'hinh_anh' => 'ha_ha.png',
             'diem' => 20,
         ]);
 
-        icons::create([
+        Icons::create([
             'hinh_anh' => 'wow.png',
             'diem' => 30,
         ]);
 
-        icons::create([
+        Icons::create([
             'hinh_anh' => 'like.png',
             'diem' => 10,
         ]);

@@ -89,7 +89,7 @@ function Circle(x, y, c, v, range) {
     var _this = this;
     this.x = x;
     this.y = y;
-    this.color = c;
+    this.color =    c;
     this.v = v;
     this.range = range;
     this.element = document.createElement("span");
