@@ -158,11 +158,11 @@
 
                             <div class="team-1">
                                 <div class="row">
-                                    <table id="diemTable" class="table table-striped m-4">
+                                    <table id="diemTable" class="table table-striped mb-3 mr-3 ml-3">
                                         <thead>
                                             <tr>
                                                 <th scope="col">Đội Thi</th>
-                                                <th scope="col">Điểm thi</th>
+                                                <th scope="col">Điểm</th>
                                             </tr>
                                         </thead>
                                         <tbody>

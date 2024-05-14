@@ -36,6 +36,24 @@ class DiemController extends Controller
         return view('admin.feedback.main', compact('doiThi', 'diem'));
     }
 
+    public function resetScore(Request $request) {
+        $id = $request->id;
+        try {
+            // Xóa điểm của giám khảo hiện tại
+            Diem::where(['id_giam_khao' => Auth::user()->id, 'id_doi_thi' => $id])->delete();
+    
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Điểm đã được reset thành công'
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Có lỗi xảy ra khi reset điểm: ' . $e->getMessage()
+            ], 500);
+        }
+    }
+
     public function addScore(Request $request)
     {
         $idGiamKhao = Auth::user()->id;

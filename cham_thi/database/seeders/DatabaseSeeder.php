@@ -96,20 +96,32 @@ class DatabaseSeeder extends Seeder
         ]);
 
         doi_thi::create([
-            'ten_doi' => 'Thiết kế đồ họa',
-            'hinh_anh' => 'avatar-doithi2.webp',
+            'ten_doi' => 'Ban đào tạo',
+            'hinh_anh' => 'bandaotao.jpg',
             'id_cuoc_thi' => 1
         ]);
 
         doi_thi::create([
-            'ten_doi' => 'Tiếng anh',
-            'hinh_anh' => 'avatar-doithi3.jpeg',
+            'ten_doi' => 'Bộ môn VHPT',
+            'hinh_anh' => 'bomonvhpt.jpg',
             'id_cuoc_thi' => 1
         ]);
 
         doi_thi::create([
-            'ten_doi' => 'Marketing',
-            'hinh_anh' => 'avatar-doithi4.jpg',
+            'ten_doi' => 'Bộ môn cơ bản',
+            'hinh_anh' => 'bomoncoban.jpg',
+            'id_cuoc_thi' => 1
+        ]);
+
+        doi_thi::create([
+            'ten_doi' => 'Liên minh Kinh tế - TKĐH',
+            'hinh_anh' => 'lienminh.jpg',
+            'id_cuoc_thi' => 1
+        ]);
+
+        doi_thi::create([
+            'ten_doi' => 'Phòng đảm bảo',
+            'hinh_anh' => 'phongdambao.jpg',
             'id_cuoc_thi' => 1
         ]);
 
