@@ -17,6 +17,9 @@
 
 <body>
     <main>
+        <div class="top-left-logo" style="position: fixed">
+            <img src="{{ url('') . '/img/top.png' }}" alt="" class="img-fluid" style="width: 150px" />
+        </div>
         <nav class="navbar navbar-expand-lg navbar-dark shadow-5-strong">
             <div class="container">
                 <a class="navbar-brand mx-auto" href="#">
@@ -103,7 +106,7 @@
                                                     @foreach ($diem as $item)
                                                         <tr class="" id="giam-khao-{{ $item->gk_id }}">
                                                             <td>
-                                                                <h4 class="text-center mb-3">{{ $item->ho_ten }}</h4>
+                                                                <h6 class="text-center mb-3">{{ $item->ho_ten }}</h6>
                                                                 <div class="emoji d-flex justify-content-around mb-2">
                                                                     <div href="#" class="icon">
                                                                         <img src="{{ url('img/red-heart_2764-fe0f.png') }}"
@@ -183,8 +186,17 @@
                                     </div> --}}
                                 </div>
                             </div>
-
                         </div>
+                    </div>
+                </div>
+                <div class="col-md-12 text-center">
+                    <img src="{{ url('') . '/img/haiphong.png' }}" alt="" class="img-fluid"
+                        style="width: 350px" />
+                </div>
+                <div class="col-md-12">
+                    <div class="bottom-right" style="position: fixed; bottom: 0px; right: 0px">
+                        <img src="{{ url('') . '/img/bottom.png' }}" alt="" class="img-fluid"
+                            style="width: 150px" />
                     </div>
                 </div>
             </div>

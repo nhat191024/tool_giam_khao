@@ -2,9 +2,9 @@
 <div class="w-100 vh-100 d-flex flex-column align-items-center p-5">
     <div class="w-100 h-75 d-flex justify-content-center bg-white border-radius mb-3 mt-3">
         <div class="w-50 position-relative">
-            <img id="team-image" src="{{ url('img/avatar-doithi1.jpg') }}" class="team-avatar">
+            <img id="team-image" src="{{ url('') . '/img/' . $doiThi[0]['hinh_anh'] }}" class="team-avatar">
             <div class="">
-                <span class="team-name" id="team-name">Công Nghệ Thông Tin</span>
+                <span class="team-name" id="team-name"> {{ $doiThi[0]['ten_doi']}}</span>
             </div>
         </div>
         <div class="w-50 d-flex justify-content-center align-items-center position-relative score">
