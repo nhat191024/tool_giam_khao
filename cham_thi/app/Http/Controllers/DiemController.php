@@ -81,7 +81,6 @@ class DiemController extends Controller
                 usort($tongDiem,function($first,$second){
                     return $first->tongso < $second->tongso;
                 });
-                
                 $event = [
                     'tongTim' => $tongTim,
                     'diem' => $diem,
