@@ -78,6 +78,10 @@ class DiemController extends Controller
                 $tongTim = $this->diemModel->tongTim($doiThi);
                 $diem = $this->diemModel->getAllDiemByIdDoi($doiThi);
                 $tongDiem = $this->diemModel->tongDiemToanDoi();
+                usort($tongDiem,function($first,$second){
+                    return $first->tongso < $second->tongso;
+                });
+                
                 $event = [
                     'tongTim' => $tongTim,
                     'diem' => $diem,
@@ -102,4 +106,5 @@ class DiemController extends Controller
             }
         }
     }
+    
 }
