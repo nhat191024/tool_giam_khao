@@ -28,7 +28,6 @@ class ClientController extends Controller
         usort($tongDiem,function($first,$second){
             return $first->tongso < $second->tongso;
         });
-        dd($tongDiem);
         return view('client.master', compact('doiThi', 'giamKhao', 'diem', 'tenDoi', 'tongTim','tongDiem'));
     }
 }
