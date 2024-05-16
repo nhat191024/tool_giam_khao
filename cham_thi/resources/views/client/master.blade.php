@@ -33,7 +33,7 @@
                 <div id="animate"></div>
             </div>
         </div>
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3 col-md-6">
                     <div class="row">
@@ -55,7 +55,7 @@
                         <div class="front">
                             <img src="{{ url('img/') . '/' . $tenDoi['hinh_anh'] }}" />
                             <div class="details">
-                                <h2>{{ $tenDoi['ten_doi'] }}</h2>
+                                <h1 style="text-transform: uppercase; font-weight: bold;">{{ $tenDoi['ten_doi'] }}</h1>
                             </div>
                             <div class="emoji d-flex justify-content-around mb-2">
                                 <div href="#" class="icon">
@@ -106,7 +106,7 @@
                                                     @foreach ($diem as $item)
                                                         <tr class="" id="giam-khao-{{ $item->gk_id }}">
                                                             <td>
-                                                                <h6 class="text-center mb-3">{{ $item->ho_ten }}</h6>
+                                                                <h4 class="text-center mb-3">{{ $item->ho_ten }}</h4>
                                                                 <div class="emoji d-flex justify-content-around mb-2">
                                                                     <div href="#" class="icon">
                                                                         <img src="{{ url('img/red-heart_2764-fe0f.png') }}"
@@ -157,9 +157,10 @@
                 <div class="col-lg-3 d-flex align-items-center justify-content-center">
                     <div class="card-box point-team">
                         <div class="front">
-                            <h4 class="text-center mt-2">Bảng Điểm</h4>
+                            <h4 class="text-center mt-2" style="color: white;
+							font-weight: bold; text-transform: uppercase;">Bảng Điểm</h4>
 
-                            <div class="team-1">
+                            <div class="container">
                                 <div class="row">
                                     <table id="diemTable" class="table table-striped mb-3 mr-3 ml-3">
                                         <thead>
@@ -191,7 +192,7 @@
                 </div>
                 <div class="col-md-12 text-center">
                     <img src="{{ url('') . '/img/haiphong.png' }}" alt="" class="img-fluid"
-                        style="width: 350px" />
+                        style="width: 250px" />
                 </div>
                 <div class="col-md-12">
                     <div class="bottom-right" style="position: fixed; bottom: 0px; right: 0px">
