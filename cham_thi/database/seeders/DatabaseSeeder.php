@@ -28,33 +28,25 @@ class DatabaseSeeder extends Seeder
         ]);
 
         nguoi_dung::create([
-            'ho_ten' => 'Nguyễn Thị Kim Phương',
-            'email' => 'phuongnk',
-            'password' => bcrypt('phuongnk'),
+            'ho_ten' => 'Phạm Thị Vân Anh',
+            'email' => 'anhptv',
+            'password' => bcrypt('anhptv'),
             'hinh_anh' => 'avatarmacdinh.jpg',
             'quyen' => 2,
         ]);
 
         nguoi_dung::create([
-            'ho_ten' => 'Đặng Quang Minh',
-            'email' => 'minhdq',
-            'password' => bcrypt('minhdq'),
+            'ho_ten' => 'Nguyễn Anh Dũng',
+            'email' => 'dungna',
+            'password' => bcrypt('dungna'),
             'hinh_anh' => 'avatarmacdinh.jpg',
             'quyen' => 2,
         ]);
 
         nguoi_dung::create([
-            'ho_ten' => 'Trần Thị Thu Hằng',
-            'email' => 'hangttt',
-            'password' => bcrypt('hangttt'),
-            'hinh_anh' => 'avatarmacdinh.jpg',
-            'quyen' => 2,
-        ]);
-
-        nguoi_dung::create([
-            'ho_ten' => 'Dương Văn Kiên',
-            'email' => 'kiendv',
-            'password' => bcrypt('kiendv'),
+            'ho_ten' => 'Đỗ Thảo Ngân',
+            'email' => 'ngandt',
+            'password' => bcrypt('ngandt'),
             'hinh_anh' => 'avatarmacdinh.jpg',
             'quyen' => 2,
         ]);
@@ -90,38 +82,26 @@ class DatabaseSeeder extends Seeder
         ]);
 
         doi_thi::create([
-            'ten_doi' => 'Liên minh Kinh tế - TKĐH',
-            'hinh_anh' => 'lienminh.jpg',
+            'ten_doi' => 'TEAM FOR FUN',
+            'hinh_anh' => 'forfun.jpg',
             'id_cuoc_thi' => 1
         ]);
 
         doi_thi::create([
-            'ten_doi' => 'Ban đào tạo',
-            'hinh_anh' => 'bandaotao.jpg',
+            'ten_doi' => 'TEAM BÚP MĂNG NON',
+            'hinh_anh' => 'bupmangnon.png',
             'id_cuoc_thi' => 1
         ]);
 
         doi_thi::create([
-            'ten_doi' => 'Bộ môn cơ bản',
-            'hinh_anh' => 'bomoncoban.jpg',
+            'ten_doi' => 'TEAM SANG FPOLY',
+            'hinh_anh' => 'sang.jpg',
             'id_cuoc_thi' => 1
         ]);
 
         doi_thi::create([
-            'ten_doi' => 'Phòng đảm bảo',
-            'hinh_anh' => 'phongdambao.jpg',
-            'id_cuoc_thi' => 1
-        ]);
-
-        doi_thi::create([
-            'ten_doi' => 'Bộ môn chuyên ngành',
-            'hinh_anh' => 'avatar-doi1.png',
-            'id_cuoc_thi' => 1
-        ]);
-
-        doi_thi::create([
-            'ten_doi' => 'Bộ môn VHPT',
-            'hinh_anh' => 'bomonvhpt.jpg',
+            'ten_doi' => 'TEAM ĐỒNG HÀNH',
+            'hinh_anh' => 'donghanh.png',
             'id_cuoc_thi' => 1
         ]);
 
