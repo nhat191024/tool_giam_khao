@@ -105,5 +105,14 @@ class DiemController extends Controller
             }
         }
     }
+
+    public function resetAllScore() {
+        return view('admin.feedback.reset_score');
+    }
+
+    public function confirmResetAllScore() {
+        Diem::truncate();
+        return redirect(route('diem.add_screen'));
+    }
     
 }

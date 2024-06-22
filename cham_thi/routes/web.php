@@ -25,6 +25,8 @@ Route::get('/feedback/', [DiemController::class, 'addScreen'])->name('diem.add_s
 Route::get('/feedback/total', [DiemController::class, 'totalScreen'])->name('diem.total_screen')->middleware('checkAdminLogin');
 Route::post('/feedback/add', [DiemController::class, 'addScore'])->name('diem.add_score')->middleware('checkAdminLogin');
 Route::get('/feedback/reset', [DiemController::class, 'resetScore'])->name('diem.reset_score')->middleware('checkAdminLogin');
+Route::get('/feedback/reset-all', [DiemController::class, 'resetAllScore'])->name('diem.reset_all_score')->middleware('checkAdminLogin');
+Route::post('/feedback/confirm-reset-all', [DiemController::class, 'confirmResetAllScore'])->name('diem.confirm_reset_all')->middleware('checkAdminLogin');
 Route::get('/client/{id}', [ClientController::class, 'show'])->name('client.show');
 
 // client
