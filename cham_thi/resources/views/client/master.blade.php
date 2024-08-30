@@ -17,6 +17,9 @@
 
 <body>
     <main>
+        <div class="top-left-logo" style="position: fixed">
+            <img src="{{ url('') . '/img/top.png' }}" alt="" class="img-fluid" style="width: 150px" />
+        </div>
         <nav class="navbar navbar-expand-lg navbar-dark shadow-5-strong">
             <div class="container">
                 <a class="navbar-brand mx-auto" href="#">
@@ -30,7 +33,7 @@
                 <div id="animate"></div>
             </div>
         </div>
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3 col-md-6">
                     <div class="row">
@@ -52,7 +55,7 @@
                         <div class="front">
                             <img src="{{ url('img/') . '/' . $tenDoi['hinh_anh'] }}" />
                             <div class="details">
-                                <h2>{{ $tenDoi['ten_doi'] }}</h2>
+                                <h1 style="text-transform: uppercase; font-weight: bold;">{{ $tenDoi['ten_doi'] }}</h1>
                             </div>
                             <div class="emoji d-flex justify-content-around mb-2">
                                 <div href="#" class="icon">
@@ -154,15 +157,16 @@
                 <div class="col-lg-3 d-flex align-items-center justify-content-center">
                     <div class="card-box point-team">
                         <div class="front">
-                            <h4 class="text-center mt-2">Bảng Điểm</h4>
+                            <h4 class="text-center mt-2" style="color: white;
+							font-weight: bold; text-transform: uppercase;">Bảng Điểm</h4>
 
-                            <div class="team-1">
+                            <div class="container">
                                 <div class="row">
-                                    <table id="diemTable" class="table table-striped m-4">
+                                    <table id="diemTable" class="table table-striped mb-3 mr-3 ml-3">
                                         <thead>
                                             <tr>
                                                 <th scope="col">Đội Thi</th>
-                                                <th scope="col">Điểm thi</th>
+                                                <th scope="col">Điểm</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -183,14 +187,24 @@
                                     </div> --}}
                                 </div>
                             </div>
-
                         </div>
+                    </div>
+                </div>
+                <div class="col-md-12 text-center">
+                    <img src="{{ url('') . '/img/haiphong.png' }}" alt="" class="img-fluid"
+                        style="width: 250px" />
+                </div>
+                <div class="col-md-12">
+                    <div class="bottom-right" style="position: fixed; bottom: 0px; right: 0px">
+                        <img src="{{ url('') . '/img/bottom.png' }}" alt="" class="img-fluid"
+                            style="width: 150px" />
                     </div>
                 </div>
             </div>
         </div>
     </main>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ mix('dist/main.js') }}"></script>
     <script type="text/javascript">

@@ -54,22 +54,26 @@ class diem extends Model
         $idGiamKhao = Auth::user()->id;
 
         $result = DB::select('SELECT d.id_giam_khao, dt.id, dt.ten_doi, nd.ho_ten,
-            COUNT(IF(d.id_icon = 1, 1, NULL)) as sotim,
-            COUNT(IF(d.id_icon = 2, 1, NULL)) as sothuong,
-            COUNT(IF(d.id_icon = 3, 1, NULL)) as sohaha,
-            COUNT(IF(d.id_icon = 4, 1, NULL)) as sowow,
-            COUNT(IF(d.id_icon = 5, 1, NULL)) as solike,
-            (
-                COUNT(IF(d.id_icon = 1, 1, NULL)) * 100 +
-                COUNT(IF(d.id_icon = 2, 1, NULL)) * 70 +
-                COUNT(IF(d.id_icon = 3, 1, NULL)) * -30 +
-                COUNT(IF(d.id_icon = 4, 1, NULL)) * 30 +
-                COUNT(IF(d.id_icon = 5, 1, NULL)) * 50
-            ) as tongso
-            FROM `doi_thi` dt
-            LEFT JOIN `diem` d ON d.id_doi_thi = dt.id AND d.id_giam_khao = ?
-            LEFT JOIN `nguoi_dung` nd ON nd.id = d.id_giam_khao
-            GROUP BY d.id_giam_khao, dt.id, dt.ten_doi, nd.ho_ten;
+        IF(COUNT(IF(d.id_icon = 1, 1, NULL)) > 0, 1, 0) as sotim,
+        IF(COUNT(IF(d.id_icon = 2, 1, NULL)) > 0, 1, 0) as sothuong,
+        IF(COUNT(IF(d.id_icon = 3, 1, NULL)) > 0, 1, 0) as sohaha,
+        IF(COUNT(IF(d.id_icon = 4, 1, NULL)) > 0, 1, 0) as sowow,
+        IF(COUNT(IF(d.id_icon = 5, 1, NULL)) > 0, 1, 0) as solike,
+        (
+            IF(COUNT(IF(d.id_icon = 1, 1, NULL)) > 0, 1, 0) * 100 +
+            IF(COUNT(IF(d.id_icon = 2, 1, NULL)) > 0, 1, 0) * 70 +
+            IF(COUNT(IF(d.id_icon = 3, 1, NULL)) > 0, 1, 0) * -30 +
+            IF(COUNT(IF(d.id_icon = 4, 1, NULL)) > 0, 1, 0) * 30 +
+            IF(COUNT(IF(d.id_icon = 5, 1, NULL)) > 0, 1, 0) * 50
+        ) as tongso
+            FROM 
+                `doi_thi` dt
+            LEFT JOIN 
+                `diem` d ON d.id_doi_thi = dt.id AND d.id_giam_khao = ?
+            LEFT JOIN 
+                `nguoi_dung` nd ON nd.id = d.id_giam_khao
+            GROUP BY 
+                d.id_giam_khao, dt.id, dt.ten_doi, nd.ho_ten;
         ', [$idGiamKhao]);
         return $result;
     }
@@ -77,66 +81,109 @@ class diem extends Model
     private function countIconOneTeam($id)
     {
         $idGiamKhao = Auth::user()->id;
-        $result = DB::select('SELECT nd.id, dt.id, dt.ten_doi, nd.ho_ten,
-        COUNT(IF(d.id_icon = 1, 1, NULL)) as sotim,
-        COUNT(IF(d.id_icon = 2, 1, NULL)) as sothuong,
-        COUNT(IF(d.id_icon = 3, 1, NULL)) as sohaha,
-        COUNT(IF(d.id_icon = 4, 1, NULL)) as sowow,
-        COUNT(IF(d.id_icon = 5, 1, NULL)) as solike,
+
+        $result = DB::select('SELECT d.id_giam_khao, dt.id, dt.ten_doi, nd.ho_ten,
+        IF(COUNT(IF(d.id_icon = 1, 1, NULL)) > 0, 1, 0) as sotim,
+        IF(COUNT(IF(d.id_icon = 2, 1, NULL)) > 0, 1, 0) as sothuong,
+        IF(COUNT(IF(d.id_icon = 3, 1, NULL)) > 0, 1, 0) as sohaha,
+        IF(COUNT(IF(d.id_icon = 4, 1, NULL)) > 0, 1, 0) as sowow,
+        IF(COUNT(IF(d.id_icon = 5, 1, NULL)) > 0, 1, 0) as solike,
         (
-            COUNT(IF(d.id_icon = 1, 1, NULL)) * 100 +
-            COUNT(IF(d.id_icon = 2, 1, NULL)) * 70 +
-            COUNT(IF(d.id_icon = 3, 1, NULL)) * -30 +
-            COUNT(IF(d.id_icon = 4, 1, NULL)) * 30 +
-            COUNT(IF(d.id_icon = 5, 1, NULL)) * 50
+            IF(COUNT(IF(d.id_icon = 1, 1, NULL)) > 0, 1, 0) * 100 +
+            IF(COUNT(IF(d.id_icon = 2, 1, NULL)) > 0, 1, 0) * 70 +
+            IF(COUNT(IF(d.id_icon = 3, 1, NULL)) > 0, 1, 0) * -30 +
+            IF(COUNT(IF(d.id_icon = 4, 1, NULL)) > 0, 1, 0) * 30 +
+            IF(COUNT(IF(d.id_icon = 5, 1, NULL)) > 0, 1, 0) * 50
         ) as tongso
-        FROM `doi_thi` dt
-        LEFT JOIN `diem` d ON d.id_doi_thi = dt.id AND d.id_giam_khao = ?
-        LEFT JOIN `nguoi_dung` nd ON d.id_giam_khao = nd.id
-        WHERE dt.id = ?
-        GROUP BY nd.id, dt.id, dt.ten_doi, nd.ho_ten;
+            FROM 
+                `doi_thi` dt
+            LEFT JOIN 
+                `diem` d ON d.id_doi_thi = dt.id AND d.id_giam_khao = ?
+            LEFT JOIN 
+                `nguoi_dung` nd ON nd.id = d.id_giam_khao
+                WHERE dt.id = ?
+            GROUP BY 
+                d.id_giam_khao, dt.id, dt.ten_doi, nd.ho_ten;
         ', [$idGiamKhao, $id]);
         return $result[0] ?? null;
     }
 
     private function countAllIconOneTeam($id)
     {
-        $result = DB::select('SELECT nd.id as gk_id, dt.id, dt.ten_doi, nd.ho_ten,
-        COUNT(IF(d.id_icon = 1, 1, NULL)) as sotim,
-        COUNT(IF(d.id_icon = 2, 1, NULL)) as sothuong,
-        COUNT(IF(d.id_icon = 3, 1, NULL)) as sohaha,
-        COUNT(IF(d.id_icon = 4, 1, NULL)) as sowow,
-        COUNT(IF(d.id_icon = 5, 1, NULL)) as solike,
+        $result = DB::select(' SELECT 
+        nd.id as gk_id, 
+        dt.id, 
+        dt.ten_doi, 
+        nd.ho_ten,
+        IFNULL(SUM(sotim), 0) as sotim,
+        IFNULL(SUM(sothuong), 0) as sothuong,
+        IFNULL(SUM(sohaha), 0) as sohaha,
+        IFNULL(SUM(sowow), 0) as sowow,
+        IFNULL(SUM(solike), 0) as solike,
         (
-            COUNT(IF(d.id_icon = 1, 1, NULL)) * 100 +
-            COUNT(IF(d.id_icon = 2, 1, NULL)) * 70 +
-            COUNT(IF(d.id_icon = 3, 1, NULL)) * -30 +
-            COUNT(IF(d.id_icon = 4, 1, NULL)) * 30 +
-            COUNT(IF(d.id_icon = 5, 1, NULL)) * 50
+            IFNULL(SUM(sotim), 0) * 100 +
+            IFNULL(SUM(sothuong), 0) * 70 +
+            IFNULL(SUM(sohaha), 0) * -30 +
+            IFNULL(SUM(sowow), 0) * 30 +
+            IFNULL(SUM(solike), 0) * 50
         ) as tongso
-        FROM `doi_thi` dt
-        LEFT JOIN `diem` d ON d.id_doi_thi = dt.id
-        LEFT JOIN `nguoi_dung` nd ON d.id_giam_khao = nd.id
-        WHERE dt.id = ?
-        GROUP BY nd.id, dt.id, dt.ten_doi, nd.ho_ten;
+        FROM 
+            doi_thi dt
+        LEFT JOIN (
+            SELECT 
+                id_doi_thi,
+                id_giam_khao,
+                IF(COUNT(IF(d.id_icon = 1, 1, NULL)) > 0, 1, 0) as sotim,
+                IF(COUNT(IF(d.id_icon = 2, 1, NULL)) > 0, 1, 0) as sothuong,
+                IF(COUNT(IF(d.id_icon = 3, 1, NULL)) > 0, 1, 0) as sohaha,
+                IF(COUNT(IF(d.id_icon = 4, 1, NULL)) > 0, 1, 0) as sowow,
+                IF(COUNT(IF(d.id_icon = 5, 1, NULL)) > 0, 1, 0) as solike
+            FROM 
+                diem d
+            GROUP BY 
+                id_doi_thi, id_giam_khao
+        ) as diem_tinh ON dt.id = diem_tinh.id_doi_thi
+        LEFT JOIN 
+            nguoi_dung nd ON diem_tinh.id_giam_khao = nd.id
+        WHERE 
+            dt.id = ?
+        GROUP BY 
+            nd.id, dt.id, dt.ten_doi, nd.ho_ten
         ', [$id]);
+
         return $result;
     }
 
     private function countAllScoreByDoiThi($id)
     {
-        $result = DB::select('SELECT COUNT(IF(d.id_icon = 1, 1, NULL)) as sotim,
-            COUNT(IF(d.id_icon = 2, 1, NULL)) as sothuong,
-            COUNT(IF(d.id_icon = 3, 1, NULL)) as sohaha,
-            COUNT(IF(d.id_icon = 4, 1, NULL)) as sowow,
-            COUNT(IF(d.id_icon = 5, 1, NULL)) as solike,
+        $result = DB::select(' SELECT 
+        IFNULL(SUM(sotim), 0) as sotim,
+        IFNULL(SUM(sothuong), 0) as sothuong,
+        IFNULL(SUM(sohaha), 0) as sohaha,
+        IFNULL(SUM(sowow), 0) as sowow,
+        IFNULL(SUM(solike), 0) as solike,
         (
-            COUNT(IF(d.id_icon = 1, 1, NULL)) * 100 +
-            COUNT(IF(d.id_icon = 2, 1, NULL)) * 70 +
-            COUNT(IF(d.id_icon = 3, 1, NULL)) * -30 +
-            COUNT(IF(d.id_icon = 4, 1, NULL)) * 30 +
-            COUNT(IF(d.id_icon = 5, 1, NULL)) * 50
-        ) as tongso FROM `diem` d WHERE d.id_doi_thi = ?
+            IFNULL(SUM(sotim), 0) * 100 +
+            IFNULL(SUM(sothuong), 0) * 70 +
+            IFNULL(SUM(sohaha), 0) * -30 +
+            IFNULL(SUM(sowow), 0) * 30 +
+            IFNULL(SUM(solike), 0) * 50
+        ) as tongso
+        FROM (
+            SELECT 
+                id_doi_thi,
+                IF(COUNT(IF(d.id_icon = 1, 1, NULL)) > 0, 1, 0) as sotim,
+                IF(COUNT(IF(d.id_icon = 2, 1, NULL)) > 0, 1, 0) as sothuong,
+                IF(COUNT(IF(d.id_icon = 3, 1, NULL)) > 0, 1, 0) as sohaha,
+                IF(COUNT(IF(d.id_icon = 4, 1, NULL)) > 0, 1, 0) as sowow,
+                IF(COUNT(IF(d.id_icon = 5, 1, NULL)) > 0, 1, 0) as solike
+            FROM 
+                diem d
+            WHERE 
+                d.id_doi_thi = ?
+            GROUP BY 
+                d.id_doi_thi, d.id_giam_khao
+        ) as diem_tinh
         ', [$id]);
 
         return $result[0];
@@ -144,19 +191,39 @@ class diem extends Model
 
     private function countAllScore()
     {
-        $result = DB::select('SELECT dt.ten_doi, dt.hinh_anh, COUNT(IF(d.id_icon = 1, 1, NULL)) as sotim,
-        COUNT(IF(d.id_icon = 2, 1, NULL)) as sothuong,
-        COUNT(IF(d.id_icon = 3, 1, NULL)) as sohaha,
-        COUNT(IF(d.id_icon = 4, 1, NULL)) as sowow,
-        COUNT(IF(d.id_icon = 5, 1, NULL)) as solike,
+        $result = DB::select('SELECT 
+        dt.id, 
+        dt.ten_doi, 
+        dt.hinh_anh,
+        IFNULL(SUM(sotim), 0) as sotim,
+        IFNULL(SUM(sothuong), 0) as sothuong,
+        IFNULL(SUM(sohaha), 0) as sohaha,
+        IFNULL(SUM(sowow), 0) as sowow,
+        IFNULL(SUM(solike), 0) as solike,
         (
-            COUNT(IF(d.id_icon = 1, 1, NULL)) * 100 +
-            COUNT(IF(d.id_icon = 2, 1, NULL)) * 70 +
-            COUNT(IF(d.id_icon = 3, 1, NULL)) * -30 +
-            COUNT(IF(d.id_icon = 4, 1, NULL)) * 30 +
-            COUNT(IF(d.id_icon = 5, 1, NULL)) * 50
-        ) as tongso from doi_thi dt left JOIN diem d on dt.id = d.id_doi_thi
-        GROUP BY dt.ten_doi, dt.hinh_anh
+            IFNULL(SUM(sotim), 0) * 100 +
+            IFNULL(SUM(sothuong), 0) * 70 +
+            IFNULL(SUM(sohaha), 0) * -30 +
+            IFNULL(SUM(sowow), 0) * 30 +
+            IFNULL(SUM(solike), 0) * 50
+        ) as tongso
+        FROM 
+            doi_thi dt
+        LEFT JOIN (
+            SELECT 
+                id_doi_thi,
+                IF(COUNT(IF(d.id_icon = 1, 1, NULL)) > 0, 1, 0) as sotim,
+                IF(COUNT(IF(d.id_icon = 2, 1, NULL)) > 0, 1, 0) as sothuong,
+                IF(COUNT(IF(d.id_icon = 3, 1, NULL)) > 0, 1, 0) as sohaha,
+                IF(COUNT(IF(d.id_icon = 4, 1, NULL)) > 0, 1, 0) as sowow,
+                IF(COUNT(IF(d.id_icon = 5, 1, NULL)) > 0, 1, 0) as solike
+            FROM 
+                diem d
+            GROUP BY 
+                d.id_doi_thi, d.id_giam_khao
+        ) as diem_tinh on dt.id = diem_tinh.id_doi_thi
+    GROUP BY 
+        dt.id, dt.ten_doi, dt.hinh_anh;
         ');
 
         return $result;

@@ -23,39 +23,31 @@ class DatabaseSeeder extends Seeder
             'ho_ten' => 'admin',
             'email' => 'admin',
             'password' => bcrypt('admin'),
-            'hinh_anh' => 'admin.jpg',
+            'hinh_anh' => 'avatarmacdinh.jpg',
             'quyen' => 1,
         ]);
 
         nguoi_dung::create([
-            'ho_ten' => 'thanhvc',
-            'email' => 'thanhvc',
-            'password' => bcrypt('thanhvc'),
-            'hinh_anh' => 'thanhvc.jpg',
-            'quyen' => 2,
-        ]);
-
-        nguoi_dung::create([
-            'ho_ten' => 'anhptv',
+            'ho_ten' => 'Phạm Thị Vân Anh',
             'email' => 'anhptv',
             'password' => bcrypt('anhptv'),
-            'hinh_anh' => 'anhptv.jpg',
+            'hinh_anh' => 'avatarmacdinh.jpg',
             'quyen' => 2,
         ]);
 
         nguoi_dung::create([
-            'ho_ten' => 'anhpt',
-            'email' => 'anhpt',
-            'password' => bcrypt('anhpt'),
-            'hinh_anh' => 'anhpt.jpg',
+            'ho_ten' => 'Nguyễn Anh Dũng',
+            'email' => 'dungna',
+            'password' => bcrypt('dungna'),
+            'hinh_anh' => 'avatarmacdinh.jpg',
             'quyen' => 2,
         ]);
 
         nguoi_dung::create([
-            'ho_ten' => 'thanghq',
-            'email' => 'thanghq',
-            'password' => bcrypt('thanghq'),
-            'hinh_anh' => 'thanghq.jpg',
+            'ho_ten' => 'Đỗ Thảo Ngân',
+            'email' => 'ngandt',
+            'password' => bcrypt('ngandt'),
+            'hinh_anh' => 'avatarmacdinh.jpg',
             'quyen' => 2,
         ]);
 
@@ -90,26 +82,26 @@ class DatabaseSeeder extends Seeder
         ]);
 
         doi_thi::create([
-            'ten_doi' => 'Công nghệ thông tin',
-            'hinh_anh' => 'avatar-doithi1.jpg',
+            'ten_doi' => 'TEAM FOR FUN',
+            'hinh_anh' => 'forfun.jpg',
             'id_cuoc_thi' => 1
         ]);
 
         doi_thi::create([
-            'ten_doi' => 'Thiết kế đồ họa',
-            'hinh_anh' => 'avatar-doithi2.webp',
+            'ten_doi' => 'TEAM BÚP MĂNG NON',
+            'hinh_anh' => 'bupmangnon.png',
             'id_cuoc_thi' => 1
         ]);
 
         doi_thi::create([
-            'ten_doi' => 'Tiếng anh',
-            'hinh_anh' => 'avatar-doithi3.jpeg',
+            'ten_doi' => 'TEAM SANG FPOLY',
+            'hinh_anh' => 'sang.jpg',
             'id_cuoc_thi' => 1
         ]);
 
         doi_thi::create([
-            'ten_doi' => 'Marketing',
-            'hinh_anh' => 'avatar-doithi4.jpg',
+            'ten_doi' => 'TEAM ĐỒNG HÀNH',
+            'hinh_anh' => 'donghanh.png',
             'id_cuoc_thi' => 1
         ]);
 
@@ -130,6 +122,11 @@ class DatabaseSeeder extends Seeder
 
         danh_sach_giam_khao::create([
             'id_giam_khao' => 4,
+            'id_cuoc_thi' => 1,
+        ]);
+
+        danh_sach_giam_khao::create([
+            'id_giam_khao' => 5,
             'id_cuoc_thi' => 1,
         ]);
     }
