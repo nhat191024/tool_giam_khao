@@ -204,6 +204,7 @@
         </div>
     </main>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ mix('dist/main.js') }}"></script>
     <script type="text/javascript">
