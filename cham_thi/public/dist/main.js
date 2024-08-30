@@ -18,8 +18,7 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_1__["default"]({
   broadcaster: 'pusher',
   key: "4ac1ff1008bb2f74fffa",
   cluster: "ap1",
-  encrypted: false,
-  forceTLS: false
+  encrypted: true
 });
 
 /***/ }),
