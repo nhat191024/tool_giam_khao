@@ -33,3 +33,7 @@ Route::get('/client/{id}', [ClientController::class, 'show'])->name('client.show
 Route::get('/login', [UserController::class, 'showLogin'])->name('client.showlogin');
 Route::post('/login', [UserController::class, 'login'])->name('client.login');
 Route::get('/logout', [UserController::class, 'logout'])->name('client.logout')->middleware('checkAdminLogin');
+
+Route::get('/check-env', function () {
+    return env('APP_URL');
+});
